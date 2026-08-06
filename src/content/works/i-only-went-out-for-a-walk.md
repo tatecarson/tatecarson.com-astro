@@ -3,7 +3,7 @@ title: "I only went out for a walk"
 year: 2016
 blurb: "Field recordings of walking, turning a daily unnoticed act into a listening meditation."
 medium: "Fixed-media soundscape composition"
-tag: "Fixed media"
+tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/img_0506.jpg"
 sourceDate: "Friday July 15th, 2016"
 ---

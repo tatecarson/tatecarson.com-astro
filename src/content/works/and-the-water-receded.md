@@ -3,7 +3,7 @@ title: "And the water receded"
 year: 2017
 blurb: "A sonification of Hurricane Katrina's track from tropical depression to landfall, compressed into a single sitting."
 medium: "Three players + electronics, animated notation"
-tag: "Score"
+tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/img_7219.jpg"
 sourceDate: "Wednesday July 15th, 2017"
 ---

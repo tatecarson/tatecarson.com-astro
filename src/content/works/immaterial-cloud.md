@@ -3,7 +3,7 @@ title: "immaterial.cloud"
 year: 2020
 blurb: "An audiovisual installation imagining a peer-to-peer networked future, where participants approaching one phone shift the sound across all of them."
 medium: "Multi-smartphone immersive installation (web)"
-tag: "Installation"
+tag: "Smartphone"
 thumbnail: "/images/uploads/immaterial-cloud.jpg"
 sourceDate: "Tuesday July 21st, 2020"
 ---

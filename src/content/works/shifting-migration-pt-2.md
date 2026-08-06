@@ -3,7 +3,7 @@ title: "Shifting Migration Pt 2"
 year: 2016
 blurb: "A continuation of the first version, time-stretching the commute recordings into longer forms."
 medium: "Fixed-media electroacoustic"
-tag: "Fixed media"
+tag: "Fixed Media"
 sourceDate: "Friday July 1st, 2016"
 ---
 

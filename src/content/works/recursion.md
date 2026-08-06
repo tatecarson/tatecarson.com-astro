@@ -3,7 +3,7 @@ title: "Recursion"
 year: 2015
 blurb: "A seven-note melody plotted on nested circles, played at self-similar speeds as an improvisation starting point."
 medium: "Graphic score for ensemble"
-tag: "Score"
+tag: "Improvising Acoustic Ensemble"
 sourceDate: "Wednesday July 15th, 2015"
 ---
 

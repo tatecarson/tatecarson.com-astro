@@ -3,7 +3,7 @@ title: "Shifting Migration"
 year: 2016
 blurb: "A week of binaural bike-commute recordings that ends by letting passing cars turn into ocean waves."
 medium: "Fixed-media, binaural field recording"
-tag: "Fixed media"
+tag: "Fixed Media"
 thumbnail: "/images/uploads/img_5092.jpeg"
 sourceDate: "Friday July 15th, 2016"
 ---

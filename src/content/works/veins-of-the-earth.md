@@ -3,7 +3,7 @@ title: "Veins of the Earth"
 year: 2024
 blurb: "Spatialized textures of wind, water, and wildlife drawn from Resonant Landscapes field recordings, exploring ecological interdependence."
 medium: "Eight-channel fixed-media electroacoustic work"
-tag: "Fixed media"
+tag: "Fixed Media"
 sourceDate: "Thursday October 30th, 2025"
 ---
 

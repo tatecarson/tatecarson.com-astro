@@ -3,7 +3,7 @@ title: "Synecdoche"
 year: 2015
 blurb: "Two tempos accelerate past the threshold of rhythmic perception until notes fuse into shifting timbre."
 medium: "Fixed-media electronic"
-tag: "Fixed media"
+tag: "Fixed Media"
 sourceDate: "Wednesday July 15th, 2020"
 ---
 

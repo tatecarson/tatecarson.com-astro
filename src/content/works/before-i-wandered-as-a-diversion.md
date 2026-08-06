@@ -3,7 +3,7 @@ title: "Before, I wandered as a diversion"
 year: 2016
 blurb: "New Orleans cicadas, riverboats, rain and thunder assembled as an augmented field recording."
 medium: "Fixed-media soundscape composition"
-tag: "Fixed media"
+tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/before-pond.jpg"
 sourceDate: "Friday July 15th, 2016"
 ---

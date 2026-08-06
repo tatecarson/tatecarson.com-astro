@@ -1,9 +1,9 @@
 ---
 title: "Pseudo, Pseudo"
 year: 2017
-blurb: "A set of pieces performed at Lisser Hall, Mills College, in April 2017."
+blurb: "Music for dance, performed at Lisser Hall, Mills College, in April 2017."
 medium: "Audio (SoundCloud playlist)"
-tag: "Performance"
+tag: "Dance"
 sourceDate: "Wednesday July 15th, 2020"
 ---
 

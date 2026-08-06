@@ -3,7 +3,7 @@ title: "S̜w͚a̎r̍m̸"
 year: 2015
 blurb: "A live-sampling instrument built to capture instrument input and return it as drone."
 medium: "Custom software instrument / live performance"
-tag: "Performance"
+tag: "Live Electroacoustic Music"
 sourceDate: "Wednesday July 15th, 2015"
 ---
 

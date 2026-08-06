@@ -3,7 +3,7 @@ title: "The Laptop as Dwelling"
 year: 2016
 blurb: "Coil-mic sonification of a laptop's innards, treating the machine as inhabited space and tuning its noise toward melody."
 medium: "Fixed-media / live electronics"
-tag: "Fixed media"
+tag: "Live Electronics"
 thumbnail: "/images/uploads/img_5046.jpg"
 sourceDate: "Friday July 15th, 2016"
 ---

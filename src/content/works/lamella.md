@@ -3,7 +3,7 @@ title: "Lamellea"
 year: 2016
 blurb: "Contact-miked music box, granulated so its melody and its machine noise trade places."
 medium: "Fixed-media electroacoustic"
-tag: "Fixed media"
+tag: "Live Electronics"
 sourceDate: "Friday July 15th, 2016"
 ---
 
