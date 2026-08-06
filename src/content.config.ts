@@ -1,15 +1,23 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// The six categories the ledger's tag column and filters run on. Adding a
-// seventh here is the only place it needs to happen.
+// Tate's own taxonomy, carried over from the archived site's `category` field.
+// It classifies by how the music is made and performed rather than by file
+// format — which is why "Live Electronics" and "Fixed Media" are separate, and
+// why the five Smartphone works read as one body of research.
+//
+// "Sound Sculpture" is the only addition: it did not exist in the archive and
+// was added for Drift (2025). Adding another category is a one-line change here
+// plus the frontmatter that uses it.
 export const TAGS = [
-  'Fixed media',
-  'Web / app',
-  'Installation',
-  'Score',
-  'Performance',
+  'Smartphone',
+  'Fixed Media',
+  'Live Electroacoustic Music',
+  'Live Electronics',
+  'Improvising Acoustic Ensemble',
+  'Dance',
   'Film',
+  'Sound Sculpture',
 ] as const;
 
 const works = defineCollection({

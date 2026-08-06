@@ -3,7 +3,7 @@ title: "A more perfect union"
 year: 2017
 blurb: "Audience listening drives an evolutionary algorithm — the longer a melody is heard, the more its \"genes\" survive into later generations."
 medium: "Participatory real-time composition; performance → installation (web audio)"
-tag: "Installation"
+tag: "Smartphone"
 thumbnail: "/images/uploads/img_7113.jpeg"
 sourceDate: "Wednesday July 15th, 2017"
 ---

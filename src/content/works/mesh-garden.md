@@ -3,7 +3,7 @@ title: "Mesh Garden"
 year: 2018
 blurb: "A sequencer distributed across a group's smartphones, played by tilting rather than constant interaction."
 medium: "Networked smartphone instrument / ambient piece"
-tag: "Web / app"
+tag: "Smartphone"
 thumbnail: "/images/uploads/mesh-garden.jpg"
 sourceDate: "Wednesday July 15th, 2018"
 ---

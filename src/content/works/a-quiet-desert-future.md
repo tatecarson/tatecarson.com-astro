@@ -3,7 +3,7 @@ title: "A Quiet Desert Future"
 year: 2016
 blurb: "Layers improvised blind and mixed live to tape in a single take."
 medium: "Fixed-media, direct-to-tape"
-tag: "Fixed media"
+tag: "Fixed Media"
 sourceDate: "Wednesday July 15th, 2020"
 ---
 

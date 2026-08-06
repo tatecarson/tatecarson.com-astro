@@ -337,7 +337,11 @@ const connect = [
 
   .work {
     display: grid;
-    grid-template-columns: 62px minmax(0, 1fr) 108px;
+    /* The tag column carries the full category names, the longest of which
+       ("Improvising Acoustic Ensemble") measures ~186px at the letter-spacing
+       below. The centre column has 602px usable and the longest title needs
+       320px, so 190px is the most that fits without either one wrapping. */
+    grid-template-columns: 62px minmax(0, 1fr) 190px;
     gap: 12px;
     align-items: baseline;
     padding: 9px 30px;
@@ -368,7 +372,9 @@ const connect = [
     font: 400 10px/2.1 var(--mono);
     text-align: right;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
+    /* Eased from .07em: at .07 the longest category needs 195px, which leaves
+       only 1px of slack in the row. */
+    letter-spacing: 0.04em;
     opacity: 0.45;
   }
 
@@ -597,34 +603,38 @@ const connect = [
       padding-inline: 20px;
     }
 
+    /* The category names are far too long for a narrow gutter — at 82px,
+       "Live Electroacoustic Music" wrapped to three lines. Instead the row
+       stacks: year and category share a line, then title, then blurb, each
+       with the full width available. */
     .work {
-      /* Wide enough that the longest tag ("FIXED MEDIA") stays on one line. */
-      grid-template-columns: 82px minmax(0, 1fr);
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 10px;
       row-gap: 2px;
       padding: 12px 20px;
     }
 
-    /* Left column stacks year over tag; right column stacks title over blurb. */
     .work__year {
       grid-area: 1 / 1;
     }
 
-    .work__title {
+    .work__tag {
       grid-area: 1 / 2;
+      text-align: left;
+      line-height: 1.9;
     }
 
-    .work__tag {
-      grid-area: 2 / 1;
-      text-align: left;
-      line-height: 1.6;
+    .work__title {
+      grid-area: 2 / 1 / auto / -1;
     }
 
     .work__blurb {
       display: block;
-      grid-area: 2 / 2;
+      grid-area: 3 / 1 / auto / -1;
       font-size: 15px;
       line-height: 1.45;
       opacity: 0.65;
+      margin-top: 2px;
     }
 
     /* Hover styling is meaningless on touch and leaves rows stuck inverted. */

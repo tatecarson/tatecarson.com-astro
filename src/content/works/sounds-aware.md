@@ -4,7 +4,7 @@ year: 2019
 yearLabel: "2019–2021"
 blurb: "A smartphone web app that uses machine learning to detect human-made sound and mask it with ambient music, redirecting attention to biophony."
 medium: "Web app, machine listening (two versions; 2021 version = dissertation research)"
-tag: "Web / app"
+tag: "Smartphone"
 thumbnail: "/images/uploads/nature3.jpg"
 sourceDate: "Tuesday July 14th, 2019"
 ---

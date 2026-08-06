@@ -3,7 +3,7 @@ title: "Twin highways flung across the evening"
 year: 2016
 blurb: "BART trains and a Chinese New Year parade — the industrial and the ceremonial — collide across eight speakers."
 medium: "Eight-channel fixed media"
-tag: "Fixed media"
+tag: "Live Electronics"
 thumbnail: "/images/uploads/img_4775.jpeg"
 sourceDate: "Friday July 15th, 2016"
 ---

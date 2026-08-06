@@ -3,7 +3,7 @@ title: "Diminishing Pt 2"
 year: 2015
 blurb: "Three short melodies handed to an ensemble that decides its own density and pacing in real time."
 medium: "Open score for ensemble"
-tag: "Score"
+tag: "Improvising Acoustic Ensemble"
 sourceDate: "Wednesday July 15th, 2015"
 ---
 

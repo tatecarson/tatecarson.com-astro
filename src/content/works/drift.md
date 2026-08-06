@@ -4,7 +4,7 @@ year: 2025
 yearLabel: "2025–"
 blurb: "The white noise machine rebuilt as kinetic sculpture — brass tubes, servos and an Arduino drifting from noise toward indeterminate musical pattern."
 medium: "Kinetic sound sculpture — wood, tuned brass tubes, servo motors, Arduino"
-tag: "Installation"
+tag: "Sound Sculpture"
 status: "In progress"
 url: "https://tatecarson.github.io/drift-website-testing/"
 collaborators: ["Tim Murray"]
