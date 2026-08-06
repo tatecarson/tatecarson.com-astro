@@ -1,0 +1,229 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import { needsUnicodeFallback } from '../../lib/text';
+
+export const getStaticPaths = (async () => {
+  const works = await getCollection('works');
+  return works.map((work) => ({ params: { slug: work.id }, props: { work } }));
+}) satisfies GetStaticPaths;
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+
+// Previous/next follow the ledger's own ordering so the arrows match the list
+// the reader just came from.
+const ordered = (await getCollection('works')).sort(
+  (a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title),
+);
+const i = ordered.findIndex((w) => w.id === work.id);
+const prev = ordered[i - 1];
+const next = ordered[i + 1];
+
+const year = work.data.yearLabel ?? String(work.data.year);
+
+// The body prose repeats the title inline, so the fallback applies to the whole
+// article rather than just the heading.
+const uni = needsUnicodeFallback(work.data.title + work.body);
+---
+
+<Base title={`${work.data.title} — Tate Carson`} description={work.data.blurb}>
+  <article class:list={['work-page', uni && 'work-page--uni']}>
+    <nav class="back">
+      <a href="/#works">← Index</a>
+    </nav>
+
+    <header class="head">
+      <div class="head__meta">
+        <span>{year}</span>
+        {work.data.status && <span class="head__wip">{work.data.status}</span>}
+        <span>{work.data.tag}</span>
+      </div>
+      <h1>{work.data.title}</h1>
+      <p class="head__blurb">{work.data.blurb}</p>
+      <p class="head__medium">{work.data.medium}</p>
+      {
+        work.data.collaborators?.length && (
+          <p class="head__medium">With {work.data.collaborators.join(', ')}</p>
+        )
+      }
+      {
+        work.data.url && (
+          <p class="head__link">
+            <a href={work.data.url}>Project site ↗</a>
+          </p>
+        )
+      }
+    </header>
+
+    {
+      work.data.thumbnail && (
+        <img class="hero" src={work.data.thumbnail} alt="" decoding="async" />
+      )
+    }
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <nav class="pager">
+      {prev ? <a href={`/works/${prev.id}/`}>← {prev.data.title}</a> : <span />}
+      {next ? <a href={`/works/${next.id}/`}>{next.data.title} →</a> : <span />}
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .work-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 26px 24px 80px;
+  }
+
+  /* Scoped to the whole article: the mono metadata lines stay as they are, but
+     every serif run switches to a face that can draw the combining marks. */
+  .work-page--uni h1,
+  .work-page--uni .head__blurb,
+  .work-page--uni .prose {
+    font-family: var(--serif-unicode);
+  }
+
+  .back {
+    font: 400 12px/1 var(--mono);
+    opacity: 0.55;
+    margin-bottom: 40px;
+  }
+
+  .head {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+  }
+
+  .head__meta {
+    display: flex;
+    gap: 16px;
+    font: 400 10px/1 var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-weight: 400;
+    font-size: 40px;
+    /* Headroom for S̜w͚a̎r̍m̸'s stacked diacritics, which clip at 1.1. */
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .head__blurb {
+    margin: 0 0 10px;
+    font-size: 20px;
+    line-height: 1.45;
+  }
+
+  .head__medium {
+    margin: 0;
+    font: 400 11px/1.6 var(--mono);
+    opacity: 0.55;
+  }
+
+  .head__wip {
+    color: var(--accent);
+  }
+
+  .head__link {
+    margin: 12px 0 0;
+    font: 400 12px/1.6 var(--mono);
+  }
+
+  .head__link a {
+    color: var(--accent);
+  }
+
+  .hero {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    margin-bottom: 26px;
+  }
+
+  .prose {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 16px;
+  }
+
+  .prose :global(h1),
+  .prose :global(h2) {
+    font: 500 10px/1 var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin: 32px 0 12px;
+  }
+
+  .prose :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--rule);
+  }
+
+  .prose :global(a:hover) {
+    text-decoration-color: currentColor;
+  }
+
+  .prose :global(ul) {
+    padding-left: 18px;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 5px;
+  }
+
+  .prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 26px 0;
+  }
+
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* The archived bodies embed SoundCloud, YouTube and Vimeo players with fixed
+     pixel widths; this keeps them inside the measure on small screens. */
+  .prose :global(iframe) {
+    max-width: 100%;
+    border: 0;
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 60px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font: 400 12px/1.5 var(--mono);
+  }
+
+  .pager a {
+    max-width: 45%;
+  }
+
+  @media (max-width: 900px) {
+    h1 {
+      font-size: 30px;
+    }
+  }
+</style>

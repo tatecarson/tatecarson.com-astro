@@ -1,0 +1,636 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { needsUnicodeFallback } from '../lib/text';
+
+const works = (await getCollection('works')).sort(
+  (a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title),
+);
+
+const [about, publications, teaching] = await Promise.all(
+  ['about', 'publications', 'teaching'].map((s) => getEntry('pages', s)),
+);
+const About = (await render(about!)).Content;
+const Publications = (await render(publications!)).Content;
+const Teaching = (await render(teaching!)).Content;
+
+// The hover panel is driven client-side from this, rather than from the DOM, so
+// the markup stays a plain list of links that works with JS off.
+const panelData = works.map((w) => ({
+  id: w.id,
+  title: w.data.title,
+  year: w.data.yearLabel ?? String(w.data.year),
+  blurb: w.data.blurb,
+  medium: w.data.medium,
+  tag: w.data.tag,
+  thumbnail: w.data.thumbnail ?? null,
+  uni: needsUnicodeFallback(w.data.title),
+  status: w.data.status ?? '',
+}));
+
+const span = `${works.at(-1)!.data.year} – ${works[0].data.year}`;
+
+// The panel opens on the newest work. Rendering its media state server-side
+// keeps the box from flashing before the client script runs, and leaves the
+// panel correct with JS disabled.
+const first = panelData[0];
+
+const nav = [
+  { n: '01', label: 'Works', href: '#works' },
+  { n: '02', label: 'About', href: '#about' },
+  { n: '03', label: 'Publications', href: '#publications' },
+  { n: '04', label: 'Teaching', href: '#teaching' },
+  { n: '05', label: 'CV', href: '#cv' },
+];
+
+const connect = [
+  { label: 'Email', href: 'mailto:tatecarson@pm.me' },
+  { label: 'Github', href: 'https://github.com/tatecarson' },
+  { label: 'Scholar', href: 'https://scholar.google.com/citations?user=XXFcT98AAAAJ&hl=en' },
+];
+---
+
+<Base title="Tate Carson">
+  <div class="ledger">
+    <nav class="rail" aria-label="Sections">
+      <a class="rail__name" href="/">Tate Carson</a>
+      <p class="rail__role">Composer, researcher,<br />upright bassist</p>
+      <ul class="rail__nav">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="rail__num">{item.n}</span> {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="rail__connect">
+        {
+          connect.map((c) => (
+            <li>
+              <a href={c.href}>{c.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <main class="column">
+      <div class="intro">
+        <p>
+          Tate Carson, PhD, is an Assistant Professor of Digital Sound Design at
+          Dakota State University (DSU), where he has been teaching since 2021.
+          His research and creative practice center on participatory mobile
+          music, web audio, and locative media.
+        </p>
+      </div>
+
+      <section id="works" class="section section--works">
+        <header class="section__head">
+          <h2 class="label">01 — Works</h2>
+          <span class="label">{span} · {works.length} entries</span>
+        </header>
+        <ul class="works">
+          {
+            works.map((w) => (
+              <li>
+                <a class="work" href={`/works/${w.id}/`} data-work={w.id}>
+                  <span
+                    class:list={['work__year', w.data.status && 'work__year--wip']}
+                    title={w.data.status}
+                  >
+                    {w.data.yearLabel ?? w.data.year}
+                  </span>
+                  <span
+                    class:list={['work__title', needsUnicodeFallback(w.data.title) && 'uni']}
+                  >
+                    {w.data.title}
+                  </span>
+                  <span class="work__tag">{w.data.tag}</span>
+                  {/* Desktop shows this in the hover panel; on touch there is no
+                      hover, so the blurb has to live in the row itself. */}
+                  <span class="work__blurb">{w.data.blurb}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section id="about" class="section">
+        <h2 class="label">02 — About</h2>
+        <div class="prose"><About /></div>
+      </section>
+
+      <section id="publications" class="section">
+        <h2 class="label">03 — Publications</h2>
+        <div class="prose prose--refs"><Publications /></div>
+      </section>
+
+      <section id="teaching" class="section">
+        <h2 class="label">04 — Teaching</h2>
+        <div class="prose"><Teaching /></div>
+      </section>
+
+      <section id="cv" class="section section--last">
+        <h2 class="label">05 — CV</h2>
+        <div class="degrees">
+          <div>PhD, Experimental Music &amp; Digital Media — Louisiana State University</div>
+          <div>MFA, Electronic Music &amp; Recording Media — Mills College</div>
+          <div>MM, Jazz Studies — University of New Orleans</div>
+          <div>BM, Music Industry Studies — Loyola University New Orleans</div>
+          <p class="degrees__link">
+            <a href="/images/uploads/carson.cv.pdf">Full CV (PDF) ↗</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="preview" aria-hidden="true">
+      <div class="preview__sticky">
+        <div class="preview__media" data-media hidden={!first?.thumbnail}>
+          {first?.thumbnail && <img src={first.thumbnail} alt="" decoding="async" />}
+        </div>
+        <div class="preview__meta">
+          <span data-year></span>
+          <span><span class="preview__wip" data-status></span><span data-tag></span></span>
+        </div>
+        <p class="preview__title" data-title></p>
+        <p class="preview__blurb" data-blurb></p>
+        <p class="preview__medium" data-medium></p>
+      </div>
+    </aside>
+  </div>
+
+  <script is:inline type="application/json" id="works-data" set:html={JSON.stringify(panelData)} />
+
+  <script>
+    const el = document.getElementById('works-data');
+    if (el) {
+      type Panel = {
+        id: string;
+        title: string;
+        year: string;
+        blurb: string;
+        medium: string;
+        tag: string;
+        thumbnail: string | null;
+        uni: boolean;
+        status: string;
+      };
+      const data: Panel[] = JSON.parse(el.textContent ?? '[]');
+      const byId = new Map(data.map((d) => [d.id, d]));
+
+      const media = document.querySelector<HTMLElement>('[data-media]')!;
+      const slots = {
+        year: document.querySelector<HTMLElement>('[data-year]')!,
+        tag: document.querySelector<HTMLElement>('[data-tag]')!,
+        status: document.querySelector<HTMLElement>('[data-status]')!,
+        title: document.querySelector<HTMLElement>('[data-title]')!,
+        blurb: document.querySelector<HTMLElement>('[data-blurb]')!,
+        medium: document.querySelector<HTMLElement>('[data-medium]')!,
+      };
+
+      let current = '';
+      function show(id: string) {
+        const d = byId.get(id);
+        if (!d || id === current) return;
+        current = id;
+        slots.year.textContent = d.year;
+        slots.tag.textContent = d.tag;
+        // Renders as "IN PROGRESS · INSTALLATION" when set, plain tag otherwise.
+        slots.status.textContent = d.status ? `${d.status} · ` : '';
+        slots.title.textContent = d.title;
+        slots.title.classList.toggle('uni', d.uni);
+        slots.blurb.textContent = d.blurb;
+        slots.medium.textContent = d.medium;
+
+        // Most of the catalogue is acousmatic — fixed media and performance
+        // audio that has no image because none exists. Rather than draw an
+        // empty frame for the majority case, the box collapses and the text
+        // takes the space.
+        if (d.thumbnail) {
+          media.innerHTML = `<img src="${d.thumbnail}" alt="" loading="lazy" decoding="async">`;
+          media.hidden = false;
+        } else {
+          media.innerHTML = '';
+          media.hidden = true;
+        }
+      }
+
+      for (const row of document.querySelectorAll<HTMLElement>('[data-work]')) {
+        const id = row.dataset.work!;
+        row.addEventListener('mouseenter', () => show(id));
+        row.addEventListener('focus', () => show(id));
+      }
+
+      if (data.length) show(data[0].id);
+    }
+  </script>
+</Base>
+
+<style>
+  .ledger {
+    display: grid;
+    grid-template-columns: 186px minmax(0, 1fr) 330px;
+    max-width: 1180px;
+    margin: 0 auto;
+    border-inline: 1px solid var(--ink);
+  }
+
+  /* ---- rail ---- */
+  .rail {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    padding: 26px 18px;
+    border-right: 1px solid var(--rule);
+    font: 400 12px/2 var(--mono);
+  }
+
+  .rail__name {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .rail__role {
+    margin: 6px 0 24px;
+    font-size: 11px;
+    line-height: 1.6;
+    opacity: 0.5;
+  }
+
+  .rail__nav,
+  .rail__connect {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rail__connect {
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  .rail__num {
+    opacity: 0.45;
+  }
+
+  .rail__nav a[aria-current='true'] {
+    color: var(--accent);
+  }
+
+  /* ---- centre column ---- */
+  .column {
+    border-right: 1px solid var(--rule);
+    min-width: 0;
+  }
+
+  .intro {
+    padding: 30px 30px 26px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .intro p {
+    margin: 0;
+    font-size: 25px;
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+
+  .section {
+    padding: 26px 30px 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section--works {
+    padding: 14px 0 0;
+  }
+
+  .section--last {
+    border-bottom: 0;
+  }
+
+  .section__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 30px 8px;
+  }
+
+  /* ---- works list ---- */
+  .works {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .work {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr) 108px;
+    gap: 12px;
+    align-items: baseline;
+    padding: 9px 30px;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+
+  .work:hover,
+  .work:focus-visible {
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    outline-offset: -2px;
+  }
+
+  .work__year {
+    font: 400 11px/1.9 var(--mono);
+    opacity: 0.5;
+  }
+
+  .work__title {
+    font-size: 20px;
+    /* Roomier than the rest of the list on purpose: one title (S̜w͚a̎r̍m̸) carries
+       stacked combining diacritics that clip at a tighter line-height. */
+    line-height: 1.35;
+  }
+
+  .work__tag {
+    font: 400 10px/2.1 var(--mono);
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    opacity: 0.45;
+  }
+
+  .work__blurb {
+    display: none;
+  }
+
+  /* Applied to any title carrying combining marks, in the row and in the panel. */
+  .uni {
+    font-family: var(--serif-unicode);
+  }
+
+  /* Unfinished work. The trailing en-dash in the year label ("2025–") already
+     reads as ongoing; the accent just keeps it from looking like a typo. */
+  .work__year--wip {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  .work:hover .work__year--wip,
+  .work:focus-visible .work__year--wip {
+    color: inherit;
+  }
+
+  .preview__wip {
+    color: var(--accent);
+  }
+
+  /* ---- prose ---- */
+  .prose {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .prose :global(h1),
+  .prose :global(h2),
+  .prose :global(h3) {
+    font: 500 10px/1 var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin: 26px 0 10px;
+  }
+
+  .prose :global(h1:first-child) {
+    margin-top: 0;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 13px;
+  }
+
+  .prose :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--rule);
+  }
+
+  .prose :global(a:hover) {
+    text-decoration-color: currentColor;
+  }
+
+  .prose :global(ul) {
+    margin: 0 0 13px;
+    padding-left: 18px;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 4px;
+  }
+
+  .prose :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 18px 0;
+  }
+
+  .prose--refs :global(li) {
+    font-size: 17px;
+    line-height: 1.5;
+    padding-bottom: 7px;
+    margin-bottom: 7px;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .prose--refs :global(ul) {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .degrees {
+    font: 400 13px/2 var(--mono);
+    margin-bottom: 22px;
+  }
+
+  .degrees__link {
+    margin: 12px 0 0;
+  }
+
+  .degrees__link a {
+    color: var(--accent);
+  }
+
+  /* ---- preview ---- */
+  .preview__sticky {
+    position: sticky;
+    top: 0;
+    padding: 26px 22px;
+  }
+
+  .preview__media {
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(23, 23, 15, 0.3);
+  }
+
+  .preview__media[hidden] {
+    display: none;
+  }
+
+  .preview__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* With the media box collapsed the metadata line becomes the panel's first
+     element and no longer needs clearance above it. */
+  .preview__media[hidden] + .preview__meta {
+    margin-top: 0;
+  }
+
+  .preview__meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0 8px;
+    font: 400 10px/1 var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .preview__title {
+    margin: 0 0 10px;
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .preview__blurb {
+    margin: 0 0 14px;
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .preview__medium {
+    margin: 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    font: 400 11px/1.6 var(--mono);
+    opacity: 0.55;
+  }
+
+  /* ---- narrow ----
+     The preview panel is hover-driven, so it has nothing to say on a touch
+     device. Below 900px it is removed outright and each row carries its own
+     blurb instead. */
+  @media (max-width: 900px) {
+    .ledger {
+      grid-template-columns: minmax(0, 1fr);
+      border-inline: 0;
+    }
+
+    .preview {
+      display: none;
+    }
+
+    .rail {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 20px;
+      align-items: start;
+      border-right: 0;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .rail__role {
+      margin-bottom: 0;
+    }
+
+    .rail__nav {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 16px;
+      margin-top: 12px;
+    }
+
+    .rail__connect {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 16px;
+      margin-top: 10px;
+    }
+
+    .rail__num {
+      display: none;
+    }
+
+    .column {
+      border-right: 0;
+    }
+
+    .intro,
+    .section {
+      padding-inline: 20px;
+    }
+
+    .intro p {
+      font-size: 21px;
+    }
+
+    .section__head {
+      padding-inline: 20px;
+    }
+
+    .work {
+      /* Wide enough that the longest tag ("FIXED MEDIA") stays on one line. */
+      grid-template-columns: 82px minmax(0, 1fr);
+      row-gap: 2px;
+      padding: 12px 20px;
+    }
+
+    /* Left column stacks year over tag; right column stacks title over blurb. */
+    .work__year {
+      grid-area: 1 / 1;
+    }
+
+    .work__title {
+      grid-area: 1 / 2;
+    }
+
+    .work__tag {
+      grid-area: 2 / 1;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .work__blurb {
+      display: block;
+      grid-area: 2 / 2;
+      font-size: 15px;
+      line-height: 1.45;
+      opacity: 0.65;
+    }
+
+    /* Hover styling is meaningless on touch and leaves rows stuck inverted. */
+    .work:hover {
+      background: none;
+      color: inherit;
+    }
+  }
+</style>
