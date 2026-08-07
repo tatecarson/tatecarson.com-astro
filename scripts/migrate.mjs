@@ -233,6 +233,22 @@ const DEAD_LINKS = {
 const fixDeadLinks = (body) =>
   Object.entries(DEAD_LINKS).reduce((s, [from, to]) => s.split(from).join(to), body);
 
+// Entries dropped from the archived pages. Matched against whole lines, so
+// these are list items rather than prose.
+const DROP_LINES = [
+  // SIIDS 2020, "Designing Collaborative and Mediated Experiences with
+  // Networked Circuit-Bent Devices" (Marasco, Carson, Bardin). The project it
+  // describes was never built, and siids.arditi.pt no longer resolves, so the
+  // citation is removed rather than left pointing at a dead domain.
+  /^\* Marasco, Anthony T\., Tate Carson/,
+];
+
+const dropLines = (body) =>
+  body
+    .split('\n')
+    .filter((line) => !DROP_LINES.some((re) => re.test(line)))
+    .join('\n');
+
 // Linkify plain bullets whose text matches a known course. Bullets that already
 // contain a link (the LSU and Liberty Magnet entries) are skipped by the
 // negated `[` in the pattern.
@@ -363,7 +379,7 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json'))) 
   write(
     path.join(outPages, `${meta.slug}.md`),
     { title: meta.title, order: meta.order },
-    linkCourses(fixDeadLinks(cleanBody(src.body ?? ''))),
+    linkCourses(fixDeadLinks(dropLines(cleanBody(src.body ?? '')))),
   );
   p++;
 }

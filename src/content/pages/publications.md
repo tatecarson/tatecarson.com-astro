@@ -15,7 +15,6 @@ order: 3
 
 * Carson, Tate, and Carter Gordon. “Resonant Landscapes.” In *Audio Mostly 2024 - Explorations in Sonic Cultures*, 525–32. Milan Italy: ACM, 2024. <https://doi.org/10.1145/3678299.3678354>.
 * Carson, Tate. ["immaterial.cloud: Using peer-to-peer technologies for music."](/papers/wac-2021-immaterial-cloud.pdf) In Proceedings of the 2021 Web Audio Conference. 2021.
-* Marasco, Anthony T., Tate Carson, and Matthew A. Bardin. ["Designing Collaborative and Mediated Experiences with Networked Circuit-Bent Devices."](https://siids.arditi.pt/wp-content/uploads/2020/08/SIIDS_2020_paper_24.pdf) In SIIDS 2020–Sound, Image and Interaction Design Symposium. 2020.
 * Carson, Tate. [“Sounds Aware: A Mobile App for Raising Awareness of Environmental Sound.”](/papers/SoundsAware_CameraReady.pdf) Trondheim, Norway, 2019.
 * Carson, Tate. [“Mesh Garden: A Creative-Based Musical Game for Participatory Musical Performance.,”](/papers/meshGarden.pdf) 339–42. Porto Alegre, Brazil, 2019.
 * Carson, Tate. [“Systems Thinking and Environmental Interaction in the Work of Tomás Saraceno and David Dunn.”](/papers/ICMC_2019_Environmental_Interaction_in_the_Work_of_Tom_s_Saraceno_and_David_Dunn.pdf) New York, 2018.
