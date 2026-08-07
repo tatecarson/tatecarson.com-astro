@@ -5,14 +5,13 @@ blurb: "An audiovisual installation imagining a peer-to-peer networked future, w
 medium: "Multi-smartphone immersive installation (web)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/immaterial-cloud.jpg"
+url: "https://immaterial.cloud"
 research:
   - kind: "Paper"
     detail: "Web Audio Conference 2021, Barcelona"
     url: "/papers/wac-2021-immaterial-cloud.pdf"
 sourceDate: "Tuesday July 21st, 2020"
 ---
-
-visit: [imamterial.cloud](https://immaterial.cloud)
 
 immaterial.cloud is an immersive audiovisual installation that explores a possible networked future of peer-to-peer technologies, away from the cloud. Participants experience the work via two to four smartphones placed in different locations in a room. As participants walk up to a phone, they see a representation of themselves through data. If the participant gets close enough, the phone triggers a change in the sound of immaterial.cloud and the other phones follow.
 

@@ -5,6 +5,8 @@ blurb: "Overlays South Dakota state-park soundscapes onto the DSU campus via GPS
 medium: "Web app / locative sound installation (ambisonics + GPS)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/palisades-1.jpeg"
+url: "https://tatecarson.github.io/resonant-landscapes/"
+repo: "https://github.com/tatecarson/resonant-landscapes"
 research:
   - kind: "Grant"
     detail: "Faculty Research Initiative Grant, Dakota State University, 2023–24"
@@ -13,8 +15,6 @@ research:
     url: "https://doi.org/10.1145/3678299.3678354"
 sourceDate: "Sunday September 29th, 2024"
 ---
-
-[Installation](https://tatecarson.github.io/resonant-landscapes/) | [Paper](https://dl.acm.org/doi/10.1145/3678299.3678354) | [Code](https://github.com/tatecarson/resonant-landscapes)
 
 ## Abstract
 

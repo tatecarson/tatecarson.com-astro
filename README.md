@@ -3,8 +3,9 @@
 Portfolio site for Tate Carson — composer, researcher, upright bassist.
 
 Astro, static output, no client framework. The home page is a single ledger:
-a dense index of works with a sticky preview panel, followed by about,
-publications, teaching, and CV. Each work also has its own page.
+a dense index of works with a sticky preview panel, followed by about, research,
+and teaching. Each work also has its own page. There is no CV section — the page
+is itself a CV, so the PDF download lives in the rail instead.
 
 Replaces the Nuxt 2 site in
 [tatecarson-new-new](https://github.com/tatecarson/tatecarson-new-new), which is
@@ -31,11 +32,13 @@ Works live in `src/content/works/` as markdown with frontmatter. The schema in
 | `yearLabel` | optional | For spans and ongoing work: `2019–2021`, `2025–`. Display only. |
 | `blurb` | required | One sentence. Shown in the hover panel and inline on mobile. |
 | `medium` | required | Format description. |
-| `tag` | required | One of six: Fixed media, Web / app, Installation, Score, Performance, Film. |
+| `tag` | required | One of the `TAGS` in `src/content.config.ts`. Not repeated here — a list in two places drifts. |
 | `thumbnail` | optional | Path under `/images/`. Absent is normal — see below. |
 | `status` | optional | `In progress`. Absence means finished. |
 | `url` | optional | Live project site, if one exists elsewhere. |
+| `repo` | optional | Public source repository. |
 | `collaborators` | optional | Array of names. |
+| `research` | optional | What the work produced — grant, award, paper, talk, demo, workshop. Rendered as its own box above the body. |
 | `sourceDate` | optional | Original CMS date from the archive. Not used for sorting — several contradict their year. |
 
 ### Works without images
