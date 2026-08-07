@@ -55,9 +55,10 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
         )
       }
       {
-        work.data.url && (
+        (work.data.url || work.data.repo) && (
           <p class="head__link">
-            <a href={work.data.url}>Project site ↗</a>
+            {work.data.url && <a href={work.data.url}>Project site ↗</a>}
+            {work.data.repo && <a href={work.data.repo}>Source ↗</a>}
           </p>
         )
       }
@@ -162,6 +163,9 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
   }
 
   .head__link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 18px;
     margin: 12px 0 0;
     font: 400 12px/1.6 var(--mono);
   }

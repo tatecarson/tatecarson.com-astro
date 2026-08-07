@@ -341,6 +341,12 @@ const connect = [
     padding-top: 14px;
     border-top: 1px solid var(--rule);
     font-size: 11px;
+  }
+
+  /* The fade sits on each link rather than on the list. opacity on the parent
+     composites the whole subtree, so the CV rule below could not climb back out
+     of it — it was rendering at 0.6 along with everything else. */
+  .rail__connect a {
     opacity: 0.6;
   }
 
@@ -349,8 +355,10 @@ const connect = [
   }
 
   /* The CV download is the one link in the rail people actively look for, so it
-     carries the accent rather than sitting at the list's 0.6 opacity. */
-  .rail__cv {
+     carries the accent rather than sitting at the list's 0.6 opacity. Matched
+     on `.rail__connect a…` so it outweighs the rule above rather than losing to
+     it on specificity. */
+  .rail__connect a.rail__cv {
     color: var(--accent);
     opacity: 1;
   }

@@ -32,8 +32,6 @@ State University.
 One sculpture is complete, with four progressively smaller pieces planned. The
 work will be presented at DSU Research Week in Madison, South Dakota.
 
-[Project site](https://tatecarson.github.io/drift-website-testing/)
-
 ---
 
 ## Design studies

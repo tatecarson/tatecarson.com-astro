@@ -149,6 +149,25 @@ const THUMBNAILS = {
   'immaterial-cloud': '/images/uploads/immaterial-cloud.jpg',
 };
 
+// Live project sites and public repositories, keyed by output slug. The archive
+// has no field for either — it carried them as ad-hoc links inside the prose,
+// in a different shape on every post ("visit: …", "Try it: …", a bare
+// "[Installation] | [Paper] | [Code]" row). Recording them here lets the page
+// template render them the same way every time, and lets the matching links
+// come out of the bodies via BODY_FIXES below.
+//
+// Every URL verified 200 on 2026-08-07.
+const URLS = {
+  'resonant-landscapes': 'https://tatecarson.github.io/resonant-landscapes/',
+  'immaterial-cloud': 'https://immaterial.cloud',
+};
+
+const REPOS = {
+  'resonant-landscapes': 'https://github.com/tatecarson/resonant-landscapes',
+  'mesh-garden': 'https://github.com/tatecarson/distributedSequencer',
+  'sounds-aware': 'https://github.com/tatecarson/walking-machine-listening',
+};
+
 // What each work produced as research — grant, prize, paper, talk. Keyed by
 // output slug. Transcribed from Carson.CV.tex; none of this exists in the
 // archived JSON, which recorded creative work and research as separate worlds.
@@ -286,6 +305,24 @@ const BODY_FIXES = {
     // subsections were already at the right level — and removes both the
     // duplicate h1 and the duplicated title.
     [/^# Sounds Aware Project Overview\n\n/m, ''],
+    // Repo link moved to REPOS; the paper beside it duplicated the research box
+    // the template renders directly above the body.
+    [/^\[Paper\]\([^)]*\) \| \[Code\]\([^)]*\)\n\n/m, ''],
+  ],
+  'resonant-landscapes': [
+    // Installation moved to URLS, Code to REPOS, and the Paper between them
+    // duplicated the Audio Mostly entry in the research box two inches above.
+    [/^\[Installation\].*\[Code\]\([^)]*\)\n\n/m, ''],
+  ],
+  'immaterial-cloud': [
+    // Moved to URLS. The link text read "imamterial.cloud"; the template's own
+    // "Project site" label retires the typo with it. The address still appears
+    // in the prose below, where it is part of the participation instructions.
+    [/^visit: \[imamterial\.cloud\]\([^)]*\)\n\n/m, ''],
+  ],
+  'mesh-garden': [
+    // Moved to REPOS.
+    [/^\[Code\]\([^)]*\)\n\n/m, ''],
   ],
   'and-the-water-receded': [
     // `###` with no `##` anywhere above it: the outline jumped from the work
@@ -303,8 +340,17 @@ const BODY_FIXES = {
   ],
 };
 
+// A fix whose pattern no longer matches is the dangerous case: the body silently
+// reverts to the archive's version and nothing says so. That happens if the
+// archive is re-exported, or — as it did once — if two entries are given the
+// same slug key and the later one quietly replaces the earlier. Fail instead.
 const fixBody = (slug, body) =>
-  (BODY_FIXES[slug] ?? []).reduce((s, [from, to]) => s.replace(from, to), body);
+  (BODY_FIXES[slug] ?? []).reduce((s, [from, to]) => {
+    if (!from.test(s)) {
+      throw new Error(`${slug}: BODY_FIXES pattern ${from} matched nothing.`);
+    }
+    return s.replace(from, to);
+  }, body);
 
 // Linkify plain bullets whose text matches a known course. Bullets that already
 // contain a link (the LSU and Liberty Magnet entries) are skipped by the
@@ -412,6 +458,8 @@ for (const file of fs.readdirSync(worksDir).filter((f) => f.endsWith('.json'))) 
       // Straight from the archive. Every one of the 21 posts carried one.
       tag: src.category,
       thumbnail: THUMBNAILS[slug] ?? src.thumbnail ?? undefined,
+      url: URLS[slug],
+      repo: REPOS[slug],
       research: RESEARCH[slug],
       // Kept only so the archive's original ordering stays recoverable; the
       // ledger sorts on `year`, since three of these dates contradict the title.

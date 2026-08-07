@@ -51,6 +51,12 @@ const works = defineCollection({
     // Live project site, where one exists separately from this page.
     url: z.string().url().optional(),
 
+    // Public source repository. Three of the archived bodies carried a bare
+    // "[Code](github…)" link in the prose, each in a different place and shape;
+    // this is where that belongs, so the page renders it the same way every
+    // time and the body does not have to.
+    repo: z.string().url().optional(),
+
     // Anyone whose contribution is structural rather than incidental. The
     // archived works record collaborators in body prose only, so this stays
     // optional rather than backfilled.

@@ -6,6 +6,7 @@ blurb: "A smartphone web app that uses machine learning to detect human-made sou
 medium: "Web app, machine listening (two versions; 2021 version = dissertation research)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/nature3.jpg"
+repo: "https://github.com/tatecarson/walking-machine-listening"
 research:
   - kind: "Paper"
     detail: "Web Audio Conference 2019, Trondheim"
@@ -20,8 +21,6 @@ This project exists in two versions of a web app called Sounds Aware. The first 
 Abstract:
 
 Sounds Aware is a web application that runs on a smartphone and uses machine learning to detect human-made sounds (anthrophony), masking them with ambient music as the user walks around their environment. Though the model is pre-trained with the author’s local environmental sounds, users can train the model on their unique soundscape for a personalized experience. After training, users can listen to ambient music based on the traits of the surrounding anthrophony. When the app senses less anthrophony and more biophony or geophony, the music fades, drawing the user's attention to the natural sounds.
-
-[Paper](/papers/SoundsAware_CameraReady.pdf) | [Code](https://github.com/tatecarson/walking-machine-listening)
 
 **Note:** In this version, any sounds you tag are only available for one session and do not persist after reloading.
 
