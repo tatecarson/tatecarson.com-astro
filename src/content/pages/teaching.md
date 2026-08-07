@@ -11,17 +11,17 @@ Previously, I taught classes on programming for art and music at Louisiana State
 
 ### 2021 - 2025
 
-* Basic Musicianship II
-* Audio Production I 
-* Audio Production II
-* Audio Production III
+* [Basic Musicianship II](https://dsu-digital-sound-design.github.io/s-26-mus-109-musicianship-II/)
+* [Audio Production I](https://dsu-digital-sound-design.github.io/f-26-DAD-222-Audio-Production-I/)
+* [Audio Production II](https://dsu-digital-sound-design.github.io/s-26-dad-322-audio-production-II/)
+* [Audio Production III](https://dsu-digital-sound-design.github.io/f-26-DAD-422-Audio-Production-III/)
 * Recording Sessions
-* Sound Design for Games
-* Sound Design for Film
-* Special Topics: AI Music
-* Special Topics: History of Recorded Music
-* Special Topics: Programming for Sound Design 
-* Special Topics: Sound Forensics
+* [Sound Design for Games](https://dsu-digital-sound-design.github.io/f-25-dad-424-sound-design-for-games/)
+* [Sound Design for Film](https://dsu-digital-sound-design.github.io/f-26-dad-310-sound-design-for-film/)
+* [Special Topics: AI Music](https://dsu-digital-sound-design.github.io/s-25-dad-492-topics-ai-music/)
+* [Special Topics: History of Recorded Music](https://dsu-digital-sound-design.github.io/f-23-history-of-recorded-music/)
+* [Special Topics: Programming for Sound Design](https://dsu-digital-sound-design.github.io/f-22-dad-492-programming-for-sound-designers/)
+* [Special Topics: Sound Forensics](https://dsu-digital-sound-design.github.io/dad-498-audio-forensics/)
 * Undergraduate Research/Scholarship  
 * Music Appreciation
 

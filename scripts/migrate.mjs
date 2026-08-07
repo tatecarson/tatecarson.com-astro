@@ -136,6 +136,49 @@ const THUMBNAILS = {
   'immaterial-cloud': '/images/uploads/immaterial-cloud.jpg',
 };
 
+// Deployed course sites in the DSU-Digital-Sound-Design org, keyed by the exact
+// bullet text in the Teaching page. Each points at the most recent offering of
+// that course whose GitHub Pages site returns 200 — several courses have five
+// or six yearly repos, and the older ones are left out rather than listed.
+//
+// Three entries stay unlinked: Undergraduate Research and Music Appreciation
+// have no repo at all, and Recording Sessions has one that isn't really used.
+// Verified 2026-08-07.
+const COURSE_LINKS = {
+  'Basic Musicianship II':
+    'https://dsu-digital-sound-design.github.io/s-26-mus-109-musicianship-II/',
+  'Audio Production I':
+    'https://dsu-digital-sound-design.github.io/f-26-DAD-222-Audio-Production-I/',
+  'Audio Production II':
+    'https://dsu-digital-sound-design.github.io/s-26-dad-322-audio-production-II/',
+  'Audio Production III':
+    'https://dsu-digital-sound-design.github.io/f-26-DAD-422-Audio-Production-III/',
+  // Recording Sessions is deliberately absent: a s-23 site exists but the
+  // course doesn't really use it.
+  'Sound Design for Games':
+    'https://dsu-digital-sound-design.github.io/f-25-dad-424-sound-design-for-games/',
+  'Sound Design for Film':
+    'https://dsu-digital-sound-design.github.io/f-26-dad-310-sound-design-for-film/',
+  'Special Topics: AI Music':
+    'https://dsu-digital-sound-design.github.io/s-25-dad-492-topics-ai-music/',
+  'Special Topics: History of Recorded Music':
+    'https://dsu-digital-sound-design.github.io/f-23-history-of-recorded-music/',
+  'Special Topics: Programming for Sound Design':
+    'https://dsu-digital-sound-design.github.io/f-22-dad-492-programming-for-sound-designers/',
+  // Repo is dad-498 but the course and its page title are both DAD 492. The
+  // older DAD-492-Sound-Forensics repo was last touched in 2021.
+  'Special Topics: Sound Forensics':
+    'https://dsu-digital-sound-design.github.io/dad-498-audio-forensics/',
+};
+
+// Linkify plain bullets whose text matches a known course. Bullets that already
+// contain a link (the LSU and Liberty Magnet entries) are skipped by the
+// negated `[` in the pattern.
+const linkCourses = (body) =>
+  body.replace(/^\* ([^[\n]+?)[ \t]*$/gm, (line, name) =>
+    COURSE_LINKS[name] ? `* [${name}](${COURSE_LINKS[name]})` : line,
+  );
+
 const yaml = (v) =>
   typeof v === 'number' ? String(v) : JSON.stringify(String(v));
 
@@ -238,7 +281,7 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json'))) 
   write(
     path.join(outPages, `${meta.slug}.md`),
     { title: meta.title, order: meta.order },
-    cleanBody(src.body ?? ''),
+    linkCourses(cleanBody(src.body ?? '')),
   );
   p++;
 }
