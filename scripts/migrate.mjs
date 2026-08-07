@@ -244,14 +244,33 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json'))) 
 }
 
 // ---- media ----------------------------------------------------------------
+// Copy the archive's media over the top WITHOUT clearing the directory first.
+// Images added since the migration — the ones THUMBNAILS points at — do not
+// exist in the archive, so wiping here destroys them. (It did exactly that
+// once: a re-run deleted si.jpg, mesh-garden.jpg and immaterial-cloud.jpg
+// while the frontmatter still referenced them.)
 const srcMedia = path.join(OLD, 'static/images/uploads');
 const dstMedia = path.join(ROOT, 'public/images/uploads');
-fs.rmSync(dstMedia, { recursive: true, force: true });
 fs.cpSync(srcMedia, dstMedia, { recursive: true });
 
 const srcPapers = path.join(OLD, 'static/papers');
 if (fs.existsSync(srcPapers)) {
   fs.cpSync(srcPapers, path.join(ROOT, 'public/papers'), { recursive: true });
+}
+
+// Every thumbnail named in frontmatter must exist on disk. A missing file here
+// means the migration deleted an image it doesn't own, or a path is wrong —
+// either way it renders as a broken panel rather than failing the build.
+const dangling = [];
+for (const f of fs.readdirSync(outWorks)) {
+  const fm = fs.readFileSync(path.join(outWorks, f), 'utf8');
+  const m = fm.match(/^thumbnail: "(.+?)"$/m);
+  if (m && !fs.existsSync(path.join(ROOT, 'public', m[1]))) {
+    dangling.push(`${f} -> ${m[1]}`);
+  }
+}
+if (dangling.length) {
+  throw new Error(`thumbnail(s) referenced but missing on disk:\n  ${dangling.join('\n  ')}`);
 }
 
 const media = fs.readdirSync(dstMedia, { recursive: true }).length;

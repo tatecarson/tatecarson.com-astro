@@ -7,6 +7,7 @@ medium: "Kinetic sound sculpture — wood, tuned brass tubes, servo motors, Ardu
 tag: "Sound Sculpture"
 status: "In progress"
 url: "https://tatecarson.github.io/drift-website-testing/"
+thumbnail: "/images/uploads/drift.jpg"
 collaborators: ["Tim Murray"]
 ---
 
