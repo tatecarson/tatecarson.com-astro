@@ -1,0 +1,35 @@
+[build]
+  # `npm run build` also fires the `prebuild` hook, which pulls the current CV
+  # from github.com/tatecarson/CV. Calling `astro build` directly would skip it
+  # and ship whatever PDF happened to be committed.
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Astro emits directory-style URLs (/works/drift/), so a request for
+# /works/drift should not 404 on the way there.
+[[redirects]]
+  from = "/works/:slug"
+  to = "/works/:slug/"
+  status = 301
+  force = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Hashed build assets are immutable; the CV is not and must not be cached hard,
+# or a freshly rebuilt CV would keep serving stale to anyone who has visited.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/carson-cv.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
