@@ -13,6 +13,6 @@ S̜w͚a̎r̍m̸ is an live-sampling instrument. It was originally built for the 
 
 ---
 
-# Performances
+## Performances
 
 * Littlefield Hall, Mills College, December 2, 2015

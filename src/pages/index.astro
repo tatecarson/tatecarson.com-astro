@@ -65,20 +65,25 @@ const connect = [
 
 <Base title="Tate Carson">
   <div class="ledger">
-    <nav class="rail" aria-label="Sections">
-      <a class="rail__name" href="/">Tate Carson</a>
+    {/* The rail is the page header, not a nav landmark: it opens with the h1
+        and happens to contain the section links. Wrapping the whole thing in
+        <nav> buried the page's only h1 inside a navigation landmark. */}
+    <header class="rail">
+      <h1 class="rail__name"><a href="/">Tate Carson</a></h1>
       <p class="rail__role">Composer, researcher,<br />upright bassist</p>
-      <ul class="rail__nav">
-        {
-          nav.map((item) => (
-            <li>
-              <a href={item.href}>
-                <span class="rail__num">{item.n}</span> {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      <nav class="rail__nav" aria-label="Sections">
+        <ul>
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href}>
+                  <span class="rail__num">{item.n}</span> {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
       <ul class="rail__connect">
         {
           connect.map((c) => (
@@ -90,7 +95,7 @@ const connect = [
           ))
         }
       </ul>
-    </nav>
+    </header>
 
     <main class="column">
       <div class="intro">
@@ -304,9 +309,13 @@ const connect = [
     font: 400 12px/2 var(--mono);
   }
 
+  /* The page h1. Sized as a rail item rather than as a heading — the visible
+     hierarchy is the 01–05 spine, not this. */
   .rail__name {
+    margin: 0;
     font-family: var(--serif);
     font-size: 19px;
+    font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.01em;
   }
@@ -318,7 +327,7 @@ const connect = [
     opacity: 0.5;
   }
 
-  .rail__nav,
+  .rail__nav ul,
   .rail__connect {
     list-style: none;
     margin: 0;
@@ -398,11 +407,15 @@ const connect = [
 
   .work {
     display: grid;
-    /* The tag column carries the full category names, the longest of which
-       ("Improvising Acoustic Ensemble") measures ~186px at the letter-spacing
-       below. The centre column has 602px usable and the longest title needs
-       320px, so 190px is the most that fits without either one wrapping. */
-    grid-template-columns: 62px minmax(0, 1fr) 190px;
+    /* The tag column takes exactly the width of its own category name rather
+       than a fixed 190px sized for the longest one ("Improvising Acoustic
+       Ensemble", ~186px). Tags are right-aligned in the last column, so their
+       right edge stays flush either way and nothing moves at full width — but
+       per-row sizing decouples the widest title from the widest tag, which
+       never occur in the same row. The worst row then needs 433px for title
+       plus tag instead of 510px, and that difference is what lets the layout
+       hold together below 1180px. */
+    grid-template-columns: 62px minmax(0, 1fr) max-content;
     gap: 12px;
     align-items: baseline;
     padding: 9px 30px;
@@ -521,9 +534,15 @@ const connect = [
     line-height: 1.55;
   }
 
-  .prose :global(h1),
+  /* Every heading inside a page body gets the same mono label treatment: the
+     01–05 spine is the page's visible hierarchy, and a body heading is a marker
+     within a section rather than a competing level. The depth still matters to
+     the document outline — scripts/migrate.mjs pushes each body down to sit
+     under the section heading above it, which is why these run h3–h5. */
   .prose :global(h2),
-  .prose :global(h3) {
+  .prose :global(h3),
+  .prose :global(h4),
+  .prose :global(h5) {
     font: 500 10px/1 var(--mono);
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -531,7 +550,10 @@ const connect = [
     margin: 26px 0 10px;
   }
 
-  .prose :global(h1:first-child) {
+  /* Was h1-specific, but the bodies no longer open on an h1 — about opens on an
+     h3 and publications on an <hr>. Scoped to the direct child so it collapses
+     the leading margin without reaching into list items and inline runs. */
+  .prose > :global(:first-child) {
     margin-top: 0;
   }
 
@@ -656,6 +678,39 @@ const connect = [
     margin-bottom: 5px;
   }
 
+  /* ---- medium ----
+     Three columns need 1095px: 519px for the widest row (year, gaps, and the
+     266px title / 167px tag pair that costs the most together), 60px of row
+     padding, the 186px rail and the 330px preview. Below that the centre column
+     is squeezed and long titles wrap — at 1024px, nine of the twenty-one rows
+     broke to two lines and one to three.
+
+     The preview is the column that gives. It is driven by hover, so it is
+     already the least useful part of the layout on a smaller screen, and
+     dropping it lets the rows keep their horizontal shape all the way down to
+     the mobile stack. The ledger keeps a fixed measure instead of widening to
+     fill, which would push the prose past a readable line length.
+
+     The breakpoint is 1140 rather than 1095 because a classic (non-overlay)
+     scrollbar takes another 17px off the viewport, and because a threshold
+     sitting exactly on the measured minimum has no room for the font metrics
+     to differ by a pixel. */
+  @media (max-width: 1140px) {
+    .ledger {
+      grid-template-columns: 186px minmax(0, 1fr);
+      max-width: 860px;
+    }
+
+    .preview {
+      display: none;
+    }
+
+    /* Would otherwise draw a second line 1px inside the ledger's own border. */
+    .column {
+      border-right: 0;
+    }
+  }
+
   /* ---- narrow ----
      The preview panel is hover-driven, so it has nothing to say on a touch
      device. Below 900px it is removed outright and each row carries its own
@@ -686,10 +741,13 @@ const connect = [
 
     .rail__nav {
       grid-column: 1 / -1;
+      margin-top: 12px;
+    }
+
+    .rail__nav ul {
       flex-direction: row;
       flex-wrap: wrap;
       gap: 0 16px;
-      margin-top: 12px;
     }
 
     .rail__connect {

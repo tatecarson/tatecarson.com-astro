@@ -24,9 +24,9 @@ Animated notation was used to aid in the realization of the sonification. It all
 
 <br><br>
 
-### Performance at New Music on the Bayou, Ruston Artisans, May 31, 2018
+## Performance at New Music on the Bayou, Ruston Artisans, May 31, 2018
 
-<img src="/images/uploads/IMG_0684.jpg">
+<img src="/images/uploads/IMG_0684.jpg" alt="A seated audience in a gallery space watching three performers, with a satellite weather map of the Gulf of Mexico projected on the wall behind them.">
 
 - - -
 

@@ -52,6 +52,20 @@ One title (`S̜w͚a̎r̍m̸`, 2015) is built from combining marks that Newsreade
 its own. `src/lib/text.ts` detects them and swaps in a system serif. It is
 detected rather than hard-coded, so a future title with marks is handled too.
 
+## Icons and share image
+
+`public/favicon.svg` is the source for the icon; the PNG fallbacks and the
+1200×630 Open Graph image are generated from it and from the Palisades
+photograph:
+
+```bash
+node scripts/make-icons.mjs
+```
+
+Run it after editing the SVG. The outputs (`favicon-32.png`,
+`apple-touch-icon.png`, `og.jpg`) are committed, so a normal build does not
+need it.
+
 ## Migration
 
 `scripts/migrate.mjs` converts the archived Nuxt JSON into this repo's content

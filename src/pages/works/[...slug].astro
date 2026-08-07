@@ -28,7 +28,13 @@ const year = work.data.yearLabel ?? String(work.data.year);
 const uni = needsUnicodeFallback(work.data.title + work.body);
 ---
 
-<Base title={`${work.data.title} — Tate Carson`} description={work.data.blurb}>
+{/* Most of the catalogue is acousmatic and has no image; those fall back to the
+    site-wide share card rather than to nothing. */}
+<Base
+  title={`${work.data.title} — Tate Carson`}
+  description={work.data.blurb}
+  image={work.data.thumbnail}
+>
   <article class:list={['work-page', uni && 'work-page--uni']}>
     <nav class="back">
       <a href="/#works">← Index</a>
@@ -229,13 +235,24 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
     margin: 0 0 16px;
   }
 
-  .prose :global(h1),
-  .prose :global(h2) {
+  /* Body sections start at h2, below the work title. h3 exists in three of the
+     bodies (screenshots and presentation subsections) and was previously
+     unstyled, rendering as a default bold serif heading twice the size of the
+     h2 above it. Both take the mono label; the h3 sits at a lower opacity so
+     the nesting still reads. */
+  .prose :global(h2),
+  .prose :global(h3) {
     font: 500 10px/1 var(--mono);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     opacity: 0.5;
     margin: 32px 0 12px;
+  }
+
+  .prose :global(h3) {
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    margin-top: 24px;
   }
 
   .prose :global(a) {
