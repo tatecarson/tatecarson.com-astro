@@ -116,10 +116,23 @@ const META = {
   },
 };
 
+// `demote` pushes every heading in the body down by that many levels. The
+// archived pages were standalone documents, so each starts its own outline at
+// `#`. Here they are rendered *inside* a section of the home page, under the
+// numbered `.label` heading that introduces them — so the body has to start one
+// level below whatever heading sits above it, or the page ends up with four
+// competing h1s and an outline that skips levels.
+//
+//   about        h2 "02 — About"                         -> body starts at h3
+//   publications h2 "03 — Research" > h3 "Publications"   -> body starts at h4
+//   teaching     h2 "04 — Teaching"                       -> body starts at h3
+//
+// about and publications start at `#` in the archive, teaching at `##`, which
+// is why the offsets differ.
 const PAGES = {
-  '1.about': { slug: 'about', title: 'About', order: 2 },
-  '2.papers': { slug: 'publications', title: 'Publications', order: 3 },
-  '3.teaching': { slug: 'teaching', title: 'Teaching', order: 4 },
+  '1.about': { slug: 'about', title: 'About', order: 2, demote: 2 },
+  '2.papers': { slug: 'publications', title: 'Publications', order: 3, demote: 3 },
+  '3.teaching': { slug: 'teaching', title: 'Teaching', order: 4, demote: 1 },
   // 4.cv is deliberately not migrated. Its entire body was a single unclosed
   // `<iframe src="…carson.cv.pdf">` — with no closing tag the HTML parser
   // swallows the rest of the document into it. The CV section is built from
@@ -249,6 +262,50 @@ const dropLines = (body) =>
     .filter((line) => !DROP_LINES.some((re) => re.test(line)))
     .join('\n');
 
+// Push every ATX heading down `by` levels, capped at h6. Line-anchored, so a
+// `#` inside prose or inside one of the pasted HTML embeds is untouched.
+const demoteHeadings = (body, by) =>
+  by ? body.replace(/^(#{1,6})(?= )/gm, (h) => '#'.repeat(Math.min(h.length + by, 6))) : body;
+
+// Per-work corrections to the archived bodies, keyed by output slug. Same idea
+// as DEAD_LINKS: the generated markdown is overwritten on every run, so a fix
+// only survives if it lives here.
+//
+// The works don't take a blanket heading offset the way the pages do — 19 of
+// the 21 already start their body sections at `##`, which is correct beneath
+// the work title in the page template. Only the three below were wrong.
+const BODY_FIXES = {
+  swarm: [
+    // The one body that used `#` for its section heading, giving the page a
+    // second h1 beside the work title.
+    [/^# Performances$/m, '## Performances'],
+  ],
+  'sounds-aware': [
+    // A `#` wrapper that just restated the work's own title, sitting above the
+    // `##` subsections it contained. Dropping it promotes nothing — those
+    // subsections were already at the right level — and removes both the
+    // duplicate h1 and the duplicated title.
+    [/^# Sounds Aware Project Overview\n\n/m, ''],
+  ],
+  'and-the-water-receded': [
+    // `###` with no `##` anywhere above it: the outline jumped from the work
+    // title straight to h3. It heads a section in its own right, like the
+    // "Performances" list below it.
+    [/^### Performance at New Music/m, '## Performance at New Music'],
+    // The archive left this one image with no alt attribute. Every other image
+    // on the site either describes itself or is marked decorative.
+    [
+      /<img src="\/images\/uploads\/IMG_0684\.jpg">/,
+      '<img src="/images/uploads/IMG_0684.jpg" alt="A seated audience in a gallery ' +
+        'space watching three performers, with a satellite weather map of the Gulf ' +
+        'of Mexico projected on the wall behind them.">',
+    ],
+  ],
+};
+
+const fixBody = (slug, body) =>
+  (BODY_FIXES[slug] ?? []).reduce((s, [from, to]) => s.replace(from, to), body);
+
 // Linkify plain bullets whose text matches a known course. Bullets that already
 // contain a link (the LSU and Liberty Magnet entries) are skipped by the
 // negated `[` in the pattern.
@@ -360,7 +417,7 @@ for (const file of fs.readdirSync(worksDir).filter((f) => f.endsWith('.json'))) 
       // ledger sorts on `year`, since three of these dates contradict the title.
       sourceDate: src.date,
     },
-    cleanBody(src.body ?? ''),
+    fixBody(slug, cleanBody(src.body ?? '')),
   );
   n++;
 }
@@ -379,7 +436,7 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json'))) 
   write(
     path.join(outPages, `${meta.slug}.md`),
     { title: meta.title, order: meta.order },
-    linkCourses(fixDeadLinks(dropLines(cleanBody(src.body ?? '')))),
+    demoteHeadings(linkCourses(fixDeadLinks(dropLines(cleanBody(src.body ?? '')))), meta.demote),
   );
   p++;
 }

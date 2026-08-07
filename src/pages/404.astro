@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Netlify serves dist/404.html for any unmatched path in a static publish
+// directory, so this needs no configuration beyond existing.
+
+const elsewhere = [
+  { label: 'Works', href: '/#works' },
+  { label: 'About', href: '/#about' },
+  { label: 'Research', href: '/#research' },
+  { label: 'Teaching', href: '/#teaching' },
+];
+---
+
+<Base
+  title="Not found — Tate Carson"
+  description="That page does not exist. Everything on this site is listed on the index."
+>
+  <main class="notfound">
+    <p class="label">Error 404</p>
+    <h1>This page isn’t here.</h1>
+    <p class="lead">
+      The address may have a typo in it, or the link may be pointing at the older
+      version of this site, which had a different shape. Everything that exists
+      is on the index.
+    </p>
+
+    <nav class="links" aria-label="Elsewhere on this site">
+      <a class="links__home" href="/">← Index</a>
+      {elsewhere.map((e) => <a href={e.href}>{e.label}</a>)}
+    </nav>
+  </main>
+</Base>
+
+<style>
+  /* Follows the work page rather than the ledger: a single measure, centred,
+     with the same mono label above a serif headline. */
+  .notfound {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 120px 24px 80px;
+  }
+
+  h1 {
+    margin: 14px 0 16px;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .lead {
+    margin: 0;
+    max-width: 46ch;
+    font-size: 20px;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 22px;
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font: 400 12px/2 var(--mono);
+  }
+
+  /* The fade sits on each link rather than on the row. opacity on the parent
+     composites the whole subtree, so an opacity: 1 child cannot climb back out
+     of it — the accent link would render at 0.6 like everything else. */
+  .links a {
+    opacity: 0.6;
+  }
+
+  /* Matched on `.links a…` so it outweighs the rule above rather than losing to
+     it on specificity. */
+  .links a.links__home {
+    color: var(--accent);
+    opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    .notfound {
+      padding: 70px 20px 60px;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+</style>

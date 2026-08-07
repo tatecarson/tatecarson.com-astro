@@ -14,6 +14,10 @@
     "fetch-cv": "node scripts/fetch-cv.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }

@@ -13,8 +13,6 @@ research:
 sourceDate: "Tuesday July 14th, 2019"
 ---
 
-# Sounds Aware Project Overview
-
 This project exists in two versions of a web app called Sounds Aware. The first version, completed in 2019, is described in this [paper](https://www.tatecarson.com/papers/SoundsAware_CameraReady.pdf). The second version was part of my dissertation research at Louisiana State University in 2021, and is described below.
 
 ## Sounds Aware (2019)
