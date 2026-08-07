@@ -30,3 +30,6 @@ pnpm-debug.log*
 .dolt/
 *.db
 .beads-credential-key
+
+# Claude Code local settings
+.claude/settings.local.json
