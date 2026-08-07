@@ -153,11 +153,14 @@ const RESEARCH = {
     },
   ],
   'immaterial-cloud': [
-    // No url: webaudioconf.com/_data/papers/pdf/2021/2021_13.pdf now 404s
-    // (the site root still resolves, so the proceedings were reorganised).
-    // The same dead link is still in the migrated publications.md, inherited
-    // from the archive. No local copy exists in public/papers/.
-    { kind: 'Paper', detail: 'Web Audio Conference 2021, Barcelona' },
+    // Self-hosted because webaudioconf.com/_data/papers/pdf/2021/2021_13.pdf
+    // now 404s — the site root still resolves, so the proceedings moved. The
+    // paper is CC BY 4.0, so hosting our own copy is fine.
+    {
+      kind: 'Paper',
+      detail: 'Web Audio Conference 2021, Barcelona',
+      url: '/papers/wac-2021-immaterial-cloud.pdf',
+    },
   ],
   'sounds-aware': [
     {
@@ -217,6 +220,18 @@ const COURSE_LINKS = {
   'Special Topics: Sound Forensics':
     'https://dsu-digital-sound-design.github.io/dad-498-audio-forensics/',
 };
+
+// URLs in the archived pages that have since rotted, mapped to a working
+// replacement. Applied to every migrated page body.
+const DEAD_LINKS = {
+  // WAC reorganised their proceedings; this 404s while the site root resolves.
+  // The paper is CC BY 4.0, so we serve our own copy.
+  'https://webaudioconf.com/_data/papers/pdf/2021/2021_13.pdf':
+    '/papers/wac-2021-immaterial-cloud.pdf',
+};
+
+const fixDeadLinks = (body) =>
+  Object.entries(DEAD_LINKS).reduce((s, [from, to]) => s.split(from).join(to), body);
 
 // Linkify plain bullets whose text matches a known course. Bullets that already
 // contain a link (the LSU and Liberty Magnet entries) are skipped by the
@@ -348,7 +363,7 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json'))) 
   write(
     path.join(outPages, `${meta.slug}.md`),
     { title: meta.title, order: meta.order },
-    linkCourses(cleanBody(src.body ?? '')),
+    linkCourses(fixDeadLinks(cleanBody(src.body ?? ''))),
   );
   p++;
 }

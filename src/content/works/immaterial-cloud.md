@@ -8,6 +8,7 @@ thumbnail: "/images/uploads/immaterial-cloud.jpg"
 research:
   - kind: "Paper"
     detail: "Web Audio Conference 2021, Barcelona"
+    url: "/papers/wac-2021-immaterial-cloud.pdf"
 sourceDate: "Tuesday July 21st, 2020"
 ---
 
