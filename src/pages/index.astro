@@ -42,7 +42,6 @@ const nav = [
   { n: '02', label: 'About', href: '#about' },
   { n: '03', label: 'Research', href: '#research' },
   { n: '04', label: 'Teaching', href: '#teaching' },
-  { n: '05', label: 'CV', href: '#cv' },
 ];
 
 // Talks, workshops and demos share a shape and a presentation; only the
@@ -57,6 +56,10 @@ const connect = [
   { label: 'Email', href: 'mailto:tatecarson@pm.me' },
   { label: 'Github', href: 'https://github.com/tatecarson' },
   { label: 'Scholar', href: 'https://scholar.google.com/citations?user=XXFcT98AAAAJ&hl=en' },
+  // The page is itself a CV, so there is no CV section — the download lives in
+  // the sticky rail instead, reachable from anywhere rather than only at the
+  // bottom of a very long page.
+  { label: 'CV (PDF) ↗', href: '/carson-cv.pdf', accent: true },
 ];
 ---
 
@@ -80,7 +83,9 @@ const connect = [
         {
           connect.map((c) => (
             <li>
-              <a href={c.href}>{c.label}</a>
+              <a href={c.href} class:list={[c.accent && 'rail__cv']}>
+                {c.label}
+              </a>
             </li>
           ))
         }
@@ -162,7 +167,7 @@ const connect = [
         }
       </section>
 
-      <section id="teaching" class="section">
+      <section id="teaching" class="section section--last">
         <h2 class="label">04 — Teaching</h2>
         <div class="prose"><Teaching /></div>
 
@@ -179,21 +184,9 @@ const connect = [
         </ul>
       </section>
 
-      <section id="cv" class="section section--last">
-        <h2 class="label">05 — CV</h2>
-        <div class="degrees">
-          <div>PhD, Experimental Music &amp; Digital Media — Louisiana State University</div>
-          <div>MFA, Electronic Music &amp; Recording Media — Mills College</div>
-          <div>MM, Jazz Studies — University of New Orleans</div>
-          <div>BM, Music Industry Studies — Loyola University New Orleans</div>
-          <p class="degrees__link">
-            {/* Pulled fresh from github.com/tatecarson/CV on every build —
-                see scripts/fetch-cv.mjs. Do not point this at the archive's
-                copy in /images/uploads, which is frozen at 2020. */}
-            <a href="/carson-cv.pdf">Full CV (PDF) ↗</a>
-          </p>
-        </div>
-      </section>
+      {/* No CV section: the page is a CV, so a section labelled "CV" inside it
+          read as a category error, and its degree list duplicated the closing
+          paragraph of About. The PDF download moved to the rail. */}
     </main>
 
     <aside class="preview" aria-hidden="true">
@@ -344,6 +337,13 @@ const connect = [
 
   .rail__num {
     opacity: 0.45;
+  }
+
+  /* The CV download is the one link in the rail people actively look for, so it
+     carries the accent rather than sitting at the list's 0.6 opacity. */
+  .rail__cv {
+    color: var(--accent);
+    opacity: 1;
   }
 
   .rail__nav a[aria-current='true'] {
@@ -575,19 +575,6 @@ const connect = [
   .prose--refs :global(ul) {
     list-style: none;
     padding-left: 0;
-  }
-
-  .degrees {
-    font: 400 13px/2 var(--mono);
-    margin-bottom: 22px;
-  }
-
-  .degrees__link {
-    margin: 12px 0 0;
-  }
-
-  .degrees__link a {
-    color: var(--accent);
   }
 
   /* ---- preview ---- */
