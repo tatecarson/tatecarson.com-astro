@@ -65,10 +65,18 @@ const elsewhere = [
     padding-top: 18px;
     border-top: 1px solid var(--rule);
     font: 400 12px/2 var(--mono);
+  }
+
+  /* The fade sits on each link rather than on the row. opacity on the parent
+     composites the whole subtree, so an opacity: 1 child cannot climb back out
+     of it — the accent link would render at 0.6 like everything else. */
+  .links a {
     opacity: 0.6;
   }
 
-  .links__home {
+  /* Matched on `.links a…` so it outweighs the rule above rather than losing to
+     it on specificity. */
+  .links a.links__home {
     color: var(--accent);
     opacity: 1;
   }
