@@ -392,7 +392,13 @@ for (const file of fs.readdirSync(pagesDir).filter((f) => f.endsWith('.json'))) 
 // while the frontmatter still referenced them.)
 const srcMedia = path.join(OLD, 'static/images/uploads');
 const dstMedia = path.join(ROOT, 'public/images/uploads');
-fs.cpSync(srcMedia, dstMedia, { recursive: true });
+fs.cpSync(srcMedia, dstMedia, {
+  recursive: true,
+  // The archive's CV is frozen at 2020 and nothing links to it — the live one
+  // is fetched to /carson-cv.pdf by scripts/fetch-cv.mjs. Copying it back on
+  // every run just reintroduces a stale document at a second URL.
+  filter: (src) => path.basename(src).toLowerCase() !== 'carson.cv.pdf',
+});
 
 const srcPapers = path.join(OLD, 'static/papers');
 if (fs.existsSync(srcPapers)) {
