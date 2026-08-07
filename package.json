@@ -7,9 +7,11 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/fetch-cv.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fetch-cv": "node scripts/fetch-cv.mjs"
   },
   "dependencies": {
     "astro": "^7.2.0"
