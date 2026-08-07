@@ -6,6 +6,10 @@ blurb: "A smartphone web app that uses machine learning to detect human-made sou
 medium: "Web app, machine listening (two versions; 2021 version = dissertation research)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/nature3.jpg"
+research:
+  - kind: "Paper"
+    detail: "Web Audio Conference 2019, Trondheim"
+    url: "/papers/SoundsAware_CameraReady.pdf"
 sourceDate: "Tuesday July 14th, 2019"
 ---
 

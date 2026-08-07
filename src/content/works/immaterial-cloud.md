@@ -5,6 +5,9 @@ blurb: "An audiovisual installation imagining a peer-to-peer networked future, w
 medium: "Multi-smartphone immersive installation (web)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/immaterial-cloud.jpg"
+research:
+  - kind: "Paper"
+    detail: "Web Audio Conference 2021, Barcelona"
 sourceDate: "Tuesday July 21st, 2020"
 ---
 

@@ -5,6 +5,12 @@ blurb: "Overlays South Dakota state-park soundscapes onto the DSU campus via GPS
 medium: "Web app / locative sound installation (ambisonics + GPS)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/palisades-1.jpeg"
+research:
+  - kind: "Grant"
+    detail: "Faculty Research Initiative Grant, Dakota State University, 2023–24"
+  - kind: "Paper"
+    detail: "Audio Mostly 2024 — Explorations in Sonic Cultures, Milan"
+    url: "https://doi.org/10.1145/3678299.3678354"
 sourceDate: "Sunday September 29th, 2024"
 ---
 

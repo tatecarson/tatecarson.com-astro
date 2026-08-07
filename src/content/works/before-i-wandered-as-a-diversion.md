@@ -5,6 +5,9 @@ blurb: "New Orleans cicadas, riverboats, rain and thunder assembled as an augmen
 medium: "Fixed-media soundscape composition"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/before-pond.jpg"
+research:
+  - kind: "Award"
+    detail: "2nd place, Musicworks 2016 Electronic Music Composition Contest"
 sourceDate: "Friday July 15th, 2016"
 ---
 

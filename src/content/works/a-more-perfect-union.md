@@ -5,6 +5,12 @@ blurb: "Audience listening drives an evolutionary algorithm — the longer a mel
 medium: "Participatory real-time composition; performance → installation (web audio)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/img_7113.jpeg"
+research:
+  - kind: "Paper"
+    detail: "Web Audio Conference 2018, Berlin"
+    url: "/papers/wac-2018-perfect.pdf"
+  - kind: "Demo"
+    detail: "Web Audio Conference 2018, Technical University of Berlin"
 sourceDate: "Wednesday July 15th, 2017"
 ---
 

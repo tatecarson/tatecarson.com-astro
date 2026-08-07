@@ -5,6 +5,10 @@ blurb: "A sequencer distributed across a group's smartphones, played by tilting 
 medium: "Networked smartphone instrument / ambient piece"
 tag: "Smartphone"
 thumbnail: "/images/uploads/mesh-garden.jpg"
+research:
+  - kind: "Paper"
+    detail: "New Interfaces for Musical Expression 2019, Porto Alegre"
+    url: "/papers/meshGarden.pdf"
 sourceDate: "Wednesday July 15th, 2018"
 ---
 

@@ -56,6 +56,30 @@ const works = defineCollection({
     // optional rather than backfilled.
     collaborators: z.array(z.string()).optional(),
 
+    // What this work produced as research — the grant that funded it, the prize
+    // it won, the paper or talk it became. Seven of the works have one; the
+    // rest are purely creative output and carry nothing here.
+    //
+    // This is the site's main answer to "where is the research", since listing
+    // it against the work is more legible than a bibliography further down.
+    research: z
+      .array(
+        z.object({
+          kind: z.enum(['Grant', 'Award', 'Paper', 'Talk', 'Demo', 'Workshop']),
+          detail: z.string().min(1),
+          // Absolute URL, or a site-relative path for the PDFs carried over
+          // from the archive into public/papers/.
+          url: z
+            .string()
+            .refine(
+              (s) => s.startsWith('/') || /^https?:\/\//.test(s),
+              'must be an absolute URL or a site-relative path',
+            )
+            .optional(),
+        }),
+      )
+      .optional(),
+
     // Original CMS date string, carried over so the archive stays traceable.
     // Deliberately not used for sorting — three of them contradict their year.
     sourceDate: z.string().optional(),

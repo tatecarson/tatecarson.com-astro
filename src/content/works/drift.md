@@ -9,6 +9,11 @@ status: "In progress"
 url: "https://tatecarson.github.io/drift-website-testing/"
 thumbnail: "/images/uploads/drift.jpg"
 collaborators: ["Tim Murray"]
+research:
+  - kind: "Grant"
+    detail: "Faculty Research Initiative Grant, Dakota State University, 2025–26 ($5,000)"
+  - kind: "Talk"
+    detail: "Work-in-progress presentation, DSU Research Week, March 2026"
 ---
 
 Drift takes the white noise machine — a device designed to be ignored — and

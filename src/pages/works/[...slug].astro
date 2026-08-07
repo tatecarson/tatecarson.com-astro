@@ -63,6 +63,24 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
       )
     }
 
+    {
+      work.data.research?.length && (
+        <section class="research">
+          <h2 class="research__label">Research</h2>
+          <ul>
+            {work.data.research.map((r) => (
+              <li>
+                <span class="research__kind">{r.kind}</span>
+                <span>
+                  {r.url ? <a href={r.url}>{r.detail} ↗</a> : r.detail}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
     <div class="prose">
       <Content />
     </div>
@@ -151,6 +169,55 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
     height: auto;
     border: 1px solid var(--rule);
     margin-bottom: 26px;
+  }
+
+  /* What this work produced as research, above the body prose — for the seven
+     works that produced any. */
+  .research {
+    margin: 0 0 26px;
+    padding: 14px 16px;
+    border: 1px solid var(--rule);
+  }
+
+  .research__label {
+    margin: 0 0 10px;
+    font: 500 10px/1 var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .research ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .research li {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px;
+    align-items: baseline;
+    padding: 5px 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .research__kind {
+    font: 400 10px/1.9 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .research a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--rule);
+  }
+
+  .research a:hover {
+    text-decoration-color: currentColor;
   }
 
   .prose {

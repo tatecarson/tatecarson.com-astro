@@ -136,6 +136,53 @@ const THUMBNAILS = {
   'immaterial-cloud': '/images/uploads/immaterial-cloud.jpg',
 };
 
+// What each work produced as research — grant, prize, paper, talk. Keyed by
+// output slug. Transcribed from Carson.CV.tex; none of this exists in the
+// archived JSON, which recorded creative work and research as separate worlds.
+// Works absent from this map produced no research and carry nothing.
+const RESEARCH = {
+  'before-i-wandered-as-a-diversion': [
+    { kind: 'Award', detail: '2nd place, Musicworks 2016 Electronic Music Composition Contest' },
+  ],
+  'resonant-landscapes': [
+    { kind: 'Grant', detail: 'Faculty Research Initiative Grant, Dakota State University, 2023–24' },
+    {
+      kind: 'Paper',
+      detail: 'Audio Mostly 2024 — Explorations in Sonic Cultures, Milan',
+      url: 'https://doi.org/10.1145/3678299.3678354',
+    },
+  ],
+  'immaterial-cloud': [
+    // No url: webaudioconf.com/_data/papers/pdf/2021/2021_13.pdf now 404s
+    // (the site root still resolves, so the proceedings were reorganised).
+    // The same dead link is still in the migrated publications.md, inherited
+    // from the archive. No local copy exists in public/papers/.
+    { kind: 'Paper', detail: 'Web Audio Conference 2021, Barcelona' },
+  ],
+  'sounds-aware': [
+    {
+      kind: 'Paper',
+      detail: 'Web Audio Conference 2019, Trondheim',
+      url: '/papers/SoundsAware_CameraReady.pdf',
+    },
+  ],
+  'mesh-garden': [
+    {
+      kind: 'Paper',
+      detail: 'New Interfaces for Musical Expression 2019, Porto Alegre',
+      url: '/papers/meshGarden.pdf',
+    },
+  ],
+  'a-more-perfect-union': [
+    {
+      kind: 'Paper',
+      detail: 'Web Audio Conference 2018, Berlin',
+      url: '/papers/wac-2018-perfect.pdf',
+    },
+    { kind: 'Demo', detail: 'Web Audio Conference 2018, Technical University of Berlin' },
+  ],
+};
+
 // Deployed course sites in the DSU-Digital-Sound-Design org, keyed by the exact
 // bullet text in the Teaching page. Each points at the most recent offering of
 // that course whose GitHub Pages site returns 200 — several courses have five
@@ -179,8 +226,27 @@ const linkCourses = (body) =>
     COURSE_LINKS[name] ? `* [${name}](${COURSE_LINKS[name]})` : line,
   );
 
-const yaml = (v) =>
+const scalar = (v) =>
   typeof v === 'number' ? String(v) : JSON.stringify(String(v));
+
+// Scalars inline; arrays as a YAML block sequence. Flow style would be valid
+// too, but these are content files people open and edit by hand, and a
+// research entry on one long JSON line is unreadable.
+const yaml = (v) => {
+  if (!Array.isArray(v)) return scalar(v);
+  return (
+    '\n' +
+    v
+      .map((item) =>
+        item !== null && typeof item === 'object'
+          ? Object.entries(item)
+              .map(([k, val], i) => `  ${i === 0 ? '- ' : '  '}${k}: ${scalar(val)}`)
+              .join('\n')
+          : `  - ${scalar(item)}`,
+      )
+      .join('\n')
+  );
+};
 
 // The old bodies are markdown with raw HTML embeds pasted in by the CMS's
 // WYSIWYG mode, which litters them with Word-style fragment markers.
@@ -216,7 +282,7 @@ function write(file, frontmatter, body) {
   assertBalancedEmbeds(file, body);
   const fm = Object.entries(frontmatter)
     .filter(([, v]) => v !== undefined && v !== '')
-    .map(([k, v]) => `${k}: ${yaml(v)}`)
+    .map(([k, v]) => `${k}: ${yaml(v)}`.replace(/[ \t]+$/gm, ''))
     .join('\n');
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, `---\n${fm}\n---\n\n${body}\n`);
@@ -258,6 +324,7 @@ for (const file of fs.readdirSync(worksDir).filter((f) => f.endsWith('.json'))) 
       // Straight from the archive. Every one of the 21 posts carried one.
       tag: src.category,
       thumbnail: THUMBNAILS[slug] ?? src.thumbnail ?? undefined,
+      research: RESEARCH[slug],
       // Kept only so the archive's original ordering stays recoverable; the
       // ledger sorts on `year`, since three of these dates contradict the title.
       sourceDate: src.date,
