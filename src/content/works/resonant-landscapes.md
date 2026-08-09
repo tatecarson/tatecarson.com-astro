@@ -20,9 +20,17 @@ sourceDate: "Sunday September 29th, 2024"
 
 Resonant Landscapes is a web application that integrates ambisonics and GPS technology to overlay soundscape recordings from South Dakota state parks onto the campus of Dakota State University (DSU). This project enables users to engage with immersive nature soundscapes in an urban environment, fostering a connection between technology and nature appreciation. By mapping the coordinates of state parks onto physical campus locations, Resonant Landscapes creates a scaled geographical rendering of these parks, allowing users to experience rich acoustic environments through their smartphones and headphones. The application utilizes a body-oriented tracking system, which uses built-in smartphone sensors to dynamically change the listener’s orientation. This paper details the technical implementation of the project, including the recording and post-processing of ambisonic audio, the development of the web-based interface, and the integration of GPS and orientation sensors. We discuss how frugal innovation principles guided our design choices, resulting in an accessible and cost-effective solution. The paper also explores the project’s foundations in soundscape studies, locative media, and ecological awareness. Future developments aim to address current limitations, improve the user experience, and extend the application’s functionality.
 
-### App Screenshots
+### Video documentation
 
-![](/images/uploads/screen-shot-2024-09-29-at-10.56.59-am.png)
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1193058418" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Resonant Landscapes documentation"></iframe></div>
+
+### App screenshots, 2024
+
+The interface as it stood at the Audio Mostly presentation: park zones drawn on
+the campus map, the distance to the nearest park, and the body-oriented tracking
+toggle.
+
+![Three iPhone screens showing the Resonant Landscapes web app: a campus map with green park zones, a panel reading "Fisher Grove State Park, 11 meters away" with a play button, and the body-oriented tracking toggle with its orientation view.](/images/uploads/screen-shot-2024-09-29-at-10.56.59-am.png)
 
 ### Audio Mostly Presentation
 

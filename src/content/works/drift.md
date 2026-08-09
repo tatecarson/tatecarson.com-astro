@@ -16,14 +16,13 @@ research:
     detail: "Work-in-progress presentation, DSU Research Week, March 2026"
 ---
 
-Drift takes the white noise machine — a device designed to be ignored — and
-rebuilds it as something that asks to be listened to. Each sculpture is built
-from wood, tuned brass tubes, servo motors, and an Arduino microcontroller, and
-slowly shifts from noise toward indeterminate musical patterns.
+A white noise machine is designed to be ignored. Drift rebuilds one as a kinetic
+sculpture, something to listen to instead. Each sculpture is built from wood,
+tuned brass tubes, servo motors, and an Arduino microcontroller, and slowly
+shifts from noise toward indeterminate musical patterns.
 
-The question underneath it: what do we lose when we control our soundscape? The
-work treats noise as material to compose with rather than something to engineer
-away.
+What do we lose when we control our soundscape? Drift treats noise as material
+to compose with rather than something to engineer away.
 
 Sound design and programming by Tate Carson; structural design and fabrication
 by Tim Murray. Supported by a Faculty Research Initiative Grant from Dakota
