@@ -239,6 +239,34 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
     margin: 0 0 16px;
   }
 
+  /* Asides in the body: a caveat about a demo link, a note about a bad video
+     recording. These were bold or italic "note:" runs, which read as part of
+     the sentence rather than as a step out of it. The label is generated here
+     so the markdown carries only the sentence. Marked with a rule rather than
+     the full box the research block uses, since an aside sits below the body
+     in importance and the box would outrank it. */
+  .prose :global(.note) {
+    margin: 0 0 16px;
+    padding-left: 14px;
+    border-left: 2px solid var(--rule);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .prose :global(.note)::before {
+    content: 'Note';
+    display: block;
+    margin-bottom: 5px;
+    font: 500 10px/1 var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .prose :global(.note p) {
+    margin: 0;
+  }
+
   /* Body sections start at h2, below the work title. h3 exists in three of the
      bodies (screenshots and presentation subsections) and was previously
      unstyled, rendering as a default bold serif heading twice the size of the

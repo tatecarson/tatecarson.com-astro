@@ -20,7 +20,7 @@ For more details about the work see the [paper](http://tatecarson.com/assets/pap
 
 Try it: <https://sparkling-sun-445.fly.dev/>
 
-**note: Use the link for demo purposes only. If you would like to perform the work contact me and I can setup a unique server for your performance**. 
+<aside class="note">Use the link for demo purposes only. If you would like to perform the work, contact me and I can set up a unique server for your performance.</aside>
 
 <iframe title="vimeo-player" src="https://player.vimeo.com/video/267062963" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
 
