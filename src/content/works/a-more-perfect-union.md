@@ -14,13 +14,13 @@ research:
 sourceDate: "Wednesday July 15th, 2017"
 ---
 
-A more perfect union is an experiment in participatory real-time composing, where the audience chooses the outcome of the work by evaluating the sounds they hear. The longer a person listens to a melody the more likely an aspect of that melody persist in future generations. The work is based on an evolutionary algorithm, in which the fittest sound of a group passes on its genes, combines with another fit sound, and creates a new one with the best of both. The piece ends when an emergent sound is found that should hopefully satisfy the audience.
+A more perfect union is an experiment in participatory real-time composing, where the audience chooses the outcome of the work by evaluating the sounds they hear. The longer a person listens to a melody the more likely an aspect of that melody is to persist in future generations. The work is based on an evolutionary algorithm, in which the fittest sound of a group passes on its genes, combines with another fit sound, and creates a new one with the best of both. The piece ends when an emergent sound is found that should hopefully satisfy the audience.
 
 For more details about the work see the [paper](http://tatecarson.com/assets/papers/wac-2018-perfect.pdf) I presented at Web Audio Conference 2018.
 
 Try it: <https://sparkling-sun-445.fly.dev/>
 
-**note: Use the link for demo purposes only. If you would like to perform the work contact me and I can setup a unique server for your performance**. 
+<aside class="note">Use the link for demo purposes only. If you would like to perform the work, contact me and I can set up a unique server for your performance.</aside>
 
 <iframe title="vimeo-player" src="https://player.vimeo.com/video/267062963" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
 

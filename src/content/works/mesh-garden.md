@@ -13,7 +13,7 @@ research:
 sourceDate: "Wednesday July 15th, 2018"
 ---
 
-This piece is a sequencer made of distributed smartphones. The idea is to allow a group of people in a relaxed situation to make a piece of ambient music with their smartphones. I derive all the interactions with the music from the orientation of the phones. The player makes one motion, and it changes the piece then listens to the result. There is not meant to be constant user interaction, more tuning the way you would a stereo.
+This piece is a sequencer made of distributed smartphones. The idea is to allow a group of people in a relaxed situation to make a piece of ambient music with their smartphones. I derive all the interactions with the music from the orientation of the phones. The player makes one motion, it changes the piece, and then they listen to the result. There is not meant to be constant user interaction, more tuning the way you would a stereo.
  
 ## Demo video
 

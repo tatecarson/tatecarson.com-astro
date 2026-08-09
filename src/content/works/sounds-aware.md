@@ -22,7 +22,7 @@ Abstract:
 
 Sounds Aware is a web application that runs on a smartphone and uses machine learning to detect human-made sounds (anthrophony), masking them with ambient music as the user walks around their environment. Though the model is pre-trained with the author’s local environmental sounds, users can train the model on their unique soundscape for a personalized experience. After training, users can listen to ambient music based on the traits of the surrounding anthrophony. When the app senses less anthrophony and more biophony or geophony, the music fades, drawing the user's attention to the natural sounds.
 
-**Note:** In this version, any sounds you tag are only available for one session and do not persist after reloading.
+<aside class="note">In this version, any sounds you tag are only available for one session and do not persist after reloading.</aside>
 
 ## Presentation at Web Audio Conference 2019 (Norwegian University of Science and Technology, Trondheim, Norway)
 
@@ -30,7 +30,7 @@ Sounds Aware is a web application that runs on a smartphone and uses machine lea
 
 <iframe width="100%" height="600" src="https://www.youtube.com/embed/4ZdOdbysd9c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-*Note: There was a glitch with the video recording that caused my voice to sound lower.* 
+<aside class="note">There was a glitch with the video recording that caused my voice to sound lower.</aside>
 
 ### Poster
 
