@@ -163,6 +163,11 @@ const connect = [
                         {a.venue} · {a.location}
                         {a.note && <span class="appearances__note"> — {a.note}</span>}
                       </span>
+                      {a.slides && (
+                        <a class="appearances__slides" href={a.slides}>
+                          Slides ↗
+                        </a>
+                      )}
                     </span>
                   </li>
                 ))}
@@ -523,6 +528,16 @@ const connect = [
     display: block;
     font-size: 17px;
     line-height: 1.4;
+  }
+
+  /* Named rather than wrapped around the title: only some talks have a deck, and
+     a bare underlined title would say nothing about what it leads to. Matches
+     the "Project site ↗" links on a work page. */
+  .appearances__slides {
+    display: inline-block;
+    margin-top: 4px;
+    font: 400 12px/1.6 var(--mono);
+    color: var(--accent);
   }
 
   .appearances__venue {
