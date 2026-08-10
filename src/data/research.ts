@@ -14,6 +14,12 @@ export interface Appearance {
   venue: string;
   location: string;
   note?: string;
+  /**
+   * Slide deck for talks that produced no paper — the only public record of
+   * those. Absent where no deck was ever published, and the entry then carries
+   * no link at all.
+   */
+  slides?: string;
 }
 
 export const talks: Appearance[] = [
@@ -30,12 +36,18 @@ export const talks: Appearance[] = [
       "Water's Sonic Signatures: Computational Sound Studies and Ecological Awareness in Tarkovsky's Films",
     venue: 'Sound Studies and Experimental Practices Conference: Actions of Water Awareness',
     location: 'Stony Brook, New York',
+    // Slidev deck from github.com/tatecarson/waters-sonic-signatures. That repo
+    // also has GitHub Pages configured, but the workflow has never run and the
+    // pages URL 404s, so Netlify is the live one.
+    slides: 'https://waters-sonic-signatures.netlify.app',
   },
   {
     year: 2023,
     title: 'Teaching Video Game Sound: Balancing Technical Know-How with Sonic Creativity',
     venue: 'ATMI/CMS National Conference',
     location: 'Miami, Florida',
+    // Marp deck from github.com/tatecarson/ATMI-Presentation-Marp.
+    slides: 'https://tatecarson.github.io/ATMI-Presentation-Marp/',
   },
 ];
 
