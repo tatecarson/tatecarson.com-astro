@@ -1,11 +1,12 @@
 ---
 title: "Resonant Landscapes"
 year: 2024
-blurb: "Overlays South Dakota state-park soundscapes onto the DSU campus via GPS, letting users walk through nature recordings in an urban setting."
+yearLabel: "2024–2026"
+blurb: "Overlays South Dakota state-park soundscapes onto a campus or park via GPS, letting listeners walk through nature recordings in a place they already know."
 medium: "Web app / locative sound installation (ambisonics + GPS)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/palisades-1.jpeg"
-url: "https://tatecarson.github.io/resonant-landscapes/"
+url: "https://resonant-landscapes.netlify.app/"
 repo: "https://github.com/tatecarson/resonant-landscapes"
 research:
   - kind: "Grant"
