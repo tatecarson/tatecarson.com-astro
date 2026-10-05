@@ -41,3 +41,4 @@ toggle.
 
 * Dakota State University Research Symposium, 2024
 * Audio Mostly Conference, Milan, Italy, September 18 - 20, 2024
+* Susan Bergman Gurrentz '56 Art Gallery, Chatham University, Pittsburgh, 2026
