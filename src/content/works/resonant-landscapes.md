@@ -2,7 +2,7 @@
 title: "Resonant Landscapes"
 year: 2024
 yearLabel: "2024–2026"
-blurb: "Overlays South Dakota state-park soundscapes onto a campus or park via GPS, letting listeners walk through nature recordings in a place they already know."
+blurb: "Maps South Dakota state-park soundscapes onto a campus or park. Listeners walk with a phone and headphones to find each recording."
 medium: "Web app / locative sound installation (ambisonics + GPS)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/palisades-1.jpeg"
