@@ -2,7 +2,7 @@
 title: "Resonant Landscapes"
 year: 2024
 yearLabel: "2024–2026"
-blurb: "Overlays South Dakota state-park soundscapes onto a campus or park via GPS, letting listeners walk through nature recordings in a place they already know."
+blurb: "Maps South Dakota state-park soundscapes onto a campus or park. Listeners walk with a phone and headphones to find each recording."
 medium: "Web app / locative sound installation (ambisonics + GPS)"
 tag: "Smartphone"
 thumbnail: "/images/uploads/palisades-1.jpeg"
@@ -14,6 +14,8 @@ research:
   - kind: "Paper"
     detail: "Audio Mostly 2024 — Explorations in Sonic Cultures, Milan"
     url: "https://doi.org/10.1145/3678299.3678354"
+  - kind: "Talk"
+    detail: "Artist talk, Sound+ Installations opening reception, Chatham University, Pittsburgh, October 8, 2026"
 sourceDate: "Sunday September 29th, 2024"
 ---
 
@@ -41,4 +43,4 @@ toggle.
 
 * Dakota State University Research Symposium, 2024
 * Audio Mostly Conference, Milan, Italy, September 18 - 20, 2024
-* Susan Bergman Gurrentz '56 Art Gallery, Chatham University, Pittsburgh, 2026
+* *Sound+ Installations*, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, Pittsburgh, October 5 - November 22, 2026
