@@ -13,7 +13,35 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SRC = 'https://raw.githubusercontent.com/tatecarson/CV/main/Carson.CV.pdf';
+const RAW = 'https://raw.githubusercontent.com/tatecarson/CV';
+const SRC = `${RAW}/main/Carson.CV.pdf`;
+const LATEST_COMMIT = 'https://api.github.com/repos/tatecarson/CV/commits/main';
+
+/**
+ * The PDF at the newest commit, not at `main`.
+ *
+ * raw.githubusercontent.com caches a branch URL for about five minutes, and
+ * the CV repo's build hook fires seconds after a push. So the rebuild it
+ * triggers fetched the PDF from before the push: the October 6 2026 CV pushes
+ * rebuilt the site twice and both times kept the September 24 copy. A URL
+ * pinned to a commit cannot be stale. If the API cannot be reached (it allows
+ * 60 unauthenticated calls an hour) this falls back to the branch URL, which
+ * is no worse than before.
+ */
+async function currentPdfUrl() {
+  try {
+    const res = await fetch(LATEST_COMMIT, {
+      headers: { Accept: 'application/vnd.github.sha' },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const sha = (await res.text()).trim();
+    if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error('no commit sha in the response');
+    return `${RAW}/${sha}/Carson.CV.pdf`;
+  } catch (err) {
+    console.warn(`cv: could not resolve the latest commit (${err.message}); using ${SRC}`);
+    return SRC;
+  }
+}
 const DEST = path.join(ROOT, 'public/carson-cv.pdf');
 
 // A PDF that fails to start with %PDF is an error page GitHub returned with a
@@ -23,7 +51,7 @@ const looksLikePdf = (buf) => buf.subarray(0, 5).toString('latin1') === '%PDF-';
 const existing = fs.existsSync(DEST) ? fs.statSync(DEST).size : 0;
 
 try {
-  const res = await fetch(SRC, { redirect: 'follow' });
+  const res = await fetch(await currentPdfUrl(), { redirect: 'follow' });
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
 
   const buf = Buffer.from(await res.arrayBuffer());

@@ -25,6 +25,13 @@ export interface Appearance {
 export const talks: Appearance[] = [
   {
     year: 2026,
+    title: 'Resonant Landscapes',
+    venue: "Sound+ Installations opening reception, Susan Bergman Gurrentz '56 Art Gallery, Chatham University",
+    location: 'Pittsburgh, Pennsylvania',
+    note: 'Artist talk, October 8, 2026',
+  },
+  {
+    year: 2026,
     title: 'DRIFT',
     venue: 'Dakota State University Research Week',
     location: 'Madison, South Dakota',
