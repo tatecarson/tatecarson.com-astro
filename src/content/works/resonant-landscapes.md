@@ -39,6 +39,14 @@ toggle.
 
 ![Presenting at Audio Mostly](/images/uploads/img-4190-audio-mostly-2024.jpg "Audio Mostly presentation")
 
+### Installation at Chatham University, 2026
+
+The gallery station in *Sound+ Installations*: the wall text with the QR code
+that starts the walk, a statement and biographies beside it, and headphones on
+a plinth.
+
+![The Resonant Landscapes wall text, with its QR code, hung on a white gallery wall beside a smaller printed statement, above a white plinth holding a pair of black headphones.](/images/uploads/chatham-installation-2026.jpg "Sound+ Installations, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, 2026")
+
 ## Exhibitions
 
 * Dakota State University Research Symposium, 2024
