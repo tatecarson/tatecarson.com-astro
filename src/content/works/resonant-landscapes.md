@@ -27,14 +27,6 @@ Resonant Landscapes is a web application that integrates ambisonics and GPS tech
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1193058418" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Resonant Landscapes documentation"></iframe></div>
 
-### App screenshots, 2024
-
-The interface as it stood at the Audio Mostly presentation: park zones drawn on
-the campus map, the distance to the nearest park, and the body-oriented tracking
-toggle.
-
-![Three iPhone screens showing the Resonant Landscapes web app: a campus map with green park zones, a panel reading "Fisher Grove State Park, 11 meters away" with a play button, and the body-oriented tracking toggle with its orientation view.](/images/uploads/screen-shot-2024-09-29-at-10.56.59-am.png)
-
 ### Audio Mostly Presentation
 
 ![Presenting at Audio Mostly](/images/uploads/img-4190-audio-mostly-2024.jpg "Audio Mostly presentation")
