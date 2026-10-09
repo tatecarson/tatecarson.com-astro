@@ -27,10 +27,6 @@ Resonant Landscapes is a web application that integrates ambisonics and GPS tech
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1193058418" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Resonant Landscapes documentation"></iframe></div>
 
-### Audio Mostly Presentation
-
-![Presenting at Audio Mostly](/images/uploads/img-4190-audio-mostly-2024.jpg "Audio Mostly presentation")
-
 ### Installation at Chatham University, 2026
 
 The gallery station in *Sound+ Installations*: the wall text with the QR code
