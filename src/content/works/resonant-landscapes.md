@@ -29,9 +29,7 @@ Resonant Landscapes is a web application that integrates ambisonics and GPS tech
 
 ### Installation at Chatham University, 2026
 
-The gallery station in *Sound+ Installations*: the wall text with the QR code
-that starts the walk, a statement and biographies beside it, and headphones on
-a plinth.
+The gallery station in *Sound+ Installations*.
 
 ![The Resonant Landscapes wall text, with its QR code, hung on a white gallery wall beside a smaller printed statement, above a white plinth holding a pair of black headphones.](/images/uploads/chatham-installation-2026.jpg "Sound+ Installations, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, 2026")
 
