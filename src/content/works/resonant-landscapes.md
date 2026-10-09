@@ -19,25 +19,48 @@ research:
 sourceDate: "Sunday September 29th, 2024"
 ---
 
-## Abstract
+## About
 
-Resonant Landscapes is a web application that integrates ambisonics and GPS technology to overlay soundscape recordings from South Dakota state parks onto the campus of Dakota State University (DSU). This project enables users to engage with immersive nature soundscapes in an urban environment, fostering a connection between technology and nature appreciation. By mapping the coordinates of state parks onto physical campus locations, Resonant Landscapes creates a scaled geographical rendering of these parks, allowing users to experience rich acoustic environments through their smartphones and headphones. The application utilizes a body-oriented tracking system, which uses built-in smartphone sensors to dynamically change the listener’s orientation. This paper details the technical implementation of the project, including the recording and post-processing of ambisonic audio, the development of the web-based interface, and the integration of GPS and orientation sensors. We discuss how frugal innovation principles guided our design choices, resulting in an accessible and cost-effective solution. The paper also explores the project’s foundations in soundscape studies, locative media, and ecological awareness. Future developments aim to address current limitations, improve the user experience, and extend the application’s functionality.
+Resonant Landscapes is a sound walk for a phone and headphones. In fall 2023 I
+traveled to all 13 of South Dakota's state parks and recorded each one with an
+ambisonic microphone. Its eight capsules capture the whole sphere of sound,
+above and below as well as all around. My student Carter Gordon helped with the
+recording and with testing the first versions of the app. You hear hundreds of
+geese on a frozen lake, the ice at Oakwood Lakes moaning and cracking, prairie
+dogs, cars at Custer, a jet passing over, our footsteps in the snow. Some parks
+were crowded and some felt remote, and the recordings keep both the people and
+the wide open space.
+
+The recordings sit at listening spots laid out like a map of the parks, scaled
+down to fit wherever the walk is installed. A trip that took us months takes an
+afternoon. As you get closer to a spot, its recording gets louder. At the center
+you can turn on rotation and face a sound by turning your body, the way you
+would in the park.
+
+There is no set route. You decide where to walk, how long to stand and which
+way to face. The recording plays over the place you're standing in, so you hear
+both at once. Frauke Behrendt calls this hybrid space. I find it makes me
+notice the sounds around me more, even after the headphones come off, because I
+start to wonder whether a sound is coming from the recording or from where I'm
+standing.
+
+The piece comes out of Hildegard Westerkamp's soundwalks of the 1970s and Janet
+Cardiff's audio walks, with a smartphone doing what her portable players did. I
+built the app to run in a web browser, so there's nothing to install. It isn't
+tied to one place. It has been walked at Dakota State University and in Milan in
+2024, in Terrace Park in Sioux Falls, and at Chatham University in 2026, its
+most built-up site so far. Each site changes what the piece means. The same
+recordings also became the surround-sound piece [*Veins of the Earth*](/works/veins-of-the-earth/).
 
 ### Video documentation
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1193058418" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Resonant Landscapes documentation"></iframe></div>
 
-### App screenshots, 2024
+### Installation at Chatham University, 2026
 
-The interface as it stood at the Audio Mostly presentation: park zones drawn on
-the campus map, the distance to the nearest park, and the body-oriented tracking
-toggle.
+The gallery station in *Sound+ Installations*.
 
-![Three iPhone screens showing the Resonant Landscapes web app: a campus map with green park zones, a panel reading "Fisher Grove State Park, 11 meters away" with a play button, and the body-oriented tracking toggle with its orientation view.](/images/uploads/screen-shot-2024-09-29-at-10.56.59-am.png)
-
-### Audio Mostly Presentation
-
-![Presenting at Audio Mostly](/images/uploads/img-4190-audio-mostly-2024.jpg "Audio Mostly presentation")
+![The Resonant Landscapes wall text, with its QR code, hung on a white gallery wall beside a smaller printed statement, above a white plinth holding a pair of black headphones.](/images/uploads/chatham-installation-2026.jpg "Sound+ Installations, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, 2026")
 
 ## Exhibitions
 
