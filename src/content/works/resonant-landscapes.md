@@ -9,14 +9,15 @@ thumbnail: "/images/uploads/palisades-1.jpeg"
 url: "https://resonant-landscapes.netlify.app/"
 repo: "https://github.com/tatecarson/resonant-landscapes"
 credits:
-  - name: "Carter Gordon"
-    role: "Field recording and app testing"
   - name: "Tate Carson"
     role: "Field recording and app development"
+  - name: "Carter Gordon"
+    role: "Field recording and app testing"
 coverage:
   - title: "Research Symposium showcases innovation, creativity at DSU"
     outlet: "Madison Daily Leader"
-    url: "https://www.madisondailyleader.com/news/local/article_455caa5e-e85e-11ee-8628-cf0c5c2b7152.html"
+    # Original publisher URL is unavailable; no Wayback capture was found.
+    url: "/press/madison-daily-leader-research-symposium-2024.pdf"
     sourceType: "Press"
     author: "Zac Zwaschka"
     date: "2024-03-23"

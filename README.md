@@ -64,11 +64,15 @@ coverage:
 ```
 
 Each credit requires a nonempty `name` and `role`; `context` is optional. Each
-coverage entry requires `title`, `outlet`, an absolute `url`, and `sourceType`,
+coverage entry requires `title`, `outlet`, a `url`, and `sourceType`,
 either `Press` or `Institutional coverage`. `author` and `date` are optional.
 Quote dates in `YYYY-MM-DD` format and omit them when the publisher is undated.
 Coverage entries and credit groups appear in frontmatter order and are maintained
 manually.
+
+Coverage URLs can be absolute publisher/archive links or site-relative paths to
+saved article PDFs in `public/press/`. PDF links display a `(PDF)` label. Preserve
+the original article URL and the reason for using a saved copy in Beads.
 
 Coverage is for articles that discuss the specific work. Papers, programs, and
 event listings belong with Research or performance/exhibition history. Verify

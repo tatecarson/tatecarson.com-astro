@@ -129,7 +129,7 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
           <ul class="coverage__list">
             {coverage.map((item) => (
               <li>
-                <p class="coverage__title"><a href={item.url}>{item.title} ↗</a></p>
+                <p class="coverage__title"><a href={item.url}>{item.title}{item.url.toLowerCase().endsWith('.pdf') && ' (PDF)'} ↗</a></p>
                 <p class="coverage__citation">
                   {item.author && <>{item.author}. </>}
                   <cite>{item.outlet}</cite>

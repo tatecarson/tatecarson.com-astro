@@ -76,7 +76,8 @@ const works = defineCollection({
         z.object({
           title: z.string().min(1),
           outlet: z.string().min(1),
-          url: z.string().url(),
+          // Publisher/archive URL, or a saved article PDF served by this site.
+          url: z.union([z.string().url(), z.string().regex(/^\/(?!\/)/)]),
           sourceType: z.enum(['Press', 'Institutional coverage']),
           author: z.string().min(1).optional(),
           // Quoted ISO date in frontmatter; omit when the publisher is undated.
