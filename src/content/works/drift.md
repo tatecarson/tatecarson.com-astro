@@ -31,12 +31,3 @@ to compose with rather than something to engineer away.
 
 One sculpture is complete, with four progressively smaller pieces planned. The
 work will be presented at DSU Research Week in Madison, South Dakota.
-
----
-
-## Design studies
-
-Mechanism and blueprint studies for the bell assemblies are kept separately in
-[drift-bell-models](https://github.com/tatecarson/drift-bell-models) — seven
-chime mechanisms built from the same budget of one DC motor, three servos and
-six brass tubes, with the two selected for build drawn up in full.
