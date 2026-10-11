@@ -65,9 +65,10 @@ coverage:
 
 Each credit requires a nonempty `name` and `role`; `context` is optional.
 Composition pages credit performers, omitting Tate's self-credit where authorship
-is already clear. Keep explicit roles for installations and film or dance
-collaborations. When Tate has an explicit credit, list Tate Carson first in the
-group, followed by the other contributors.
+is already clear. *Pseudo, Pseudo* credits choreography without repeating Tate's
+music authorship. Keep explicit roles for installations and other collaborations
+where Tate's contribution needs explanation. When Tate has an explicit credit,
+list Tate Carson first in the group, followed by the other contributors.
 Each coverage entry requires `title`, `outlet`, a `url`, and `sourceType`,
 either `Press` or `Institutional coverage`. `author` and `date` are optional.
 Quote dates in `YYYY-MM-DD` format and omit them when the publisher is undated.
