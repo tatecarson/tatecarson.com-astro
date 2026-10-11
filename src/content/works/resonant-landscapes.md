@@ -14,6 +14,12 @@ credits:
   - name: "Tate Carson"
     role: "Field recording and app development"
 coverage:
+  - title: "Research Symposium showcases innovation, creativity at DSU"
+    outlet: "Madison Daily Leader"
+    url: "https://www.madisondailyleader.com/news/local/article_455caa5e-e85e-11ee-8628-cf0c5c2b7152.html"
+    sourceType: "Press"
+    author: "Zac Zwaschka"
+    date: "2024-03-23"
   - title: "Resonant Landscapes: DSU researchers make music with nature"
     outlet: "Dakota State University"
     url: "https://dsu.edu/news/2023/12/resonant-landscapes.html"
