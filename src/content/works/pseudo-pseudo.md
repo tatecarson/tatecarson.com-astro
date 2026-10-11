@@ -4,6 +4,11 @@ year: 2017
 blurb: "Music for dance, performed at Lisser Hall, Mills College, in April 2017."
 medium: "Audio (SoundCloud playlist)"
 tag: "Dance"
+credits:
+  - name: "Stephanie Hewett"
+    role: "Choreography"
+  - name: "Tate Carson"
+    role: "Music"
 sourceDate: "Wednesday July 15th, 2020"
 ---
 

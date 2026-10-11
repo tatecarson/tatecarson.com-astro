@@ -9,6 +9,11 @@ status: "In progress"
 url: "https://tatecarson.github.io/drift-website-testing/"
 thumbnail: "/images/uploads/drift.jpg"
 collaborators: ["Tim Murray"]
+credits:
+  - name: "Tim Murray"
+    role: "Structural design and fabrication"
+  - name: "Tate Carson"
+    role: "Sound design and programming"
 research:
   - kind: "Grant"
     detail: "Faculty Research Initiative Grant, Dakota State University, 2025–26 ($5,000)"
@@ -23,10 +28,6 @@ shifts from noise toward indeterminate musical patterns.
 
 What do we lose when we control our soundscape? Drift treats noise as material
 to compose with rather than something to engineer away.
-
-Sound design and programming by Tate Carson; structural design and fabrication
-by Tim Murray. Supported by a Faculty Research Initiative Grant from Dakota
-State University.
 
 One sculpture is complete, with four progressively smaller pieces planned. The
 work will be presented at DSU Research Week in Madison, South Dakota.

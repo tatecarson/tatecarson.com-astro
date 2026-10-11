@@ -5,6 +5,19 @@ blurb: "A sonification of Hurricane Katrina's track from tropical depression to 
 medium: "Three players + electronics, animated notation"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/img_7219.jpg"
+credits:
+  - name: "Marissa Deitz"
+    role: "Cello"
+    context: "Signal Flow, Littlefield Concert Hall, Mills College, March 12, 2017"
+  - name: "Honor Monaco"
+    role: "Violin"
+    context: "Signal Flow, Littlefield Concert Hall, Mills College, March 12, 2017"
+  - name: "Kevin Robinson"
+    role: "Bass clarinet"
+    context: "Signal Flow, Littlefield Concert Hall, Mills College, March 12, 2017"
+  - name: "Tate Carson"
+    role: "Composition and electronics"
+    context: "Signal Flow, Littlefield Concert Hall, Mills College, March 12, 2017"
 sourceDate: "Wednesday July 15th, 2017"
 ---
 

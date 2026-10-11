@@ -2,9 +2,14 @@
 title: "I only went out for a walk"
 year: 2016
 blurb: "Field recordings of walking, turning a daily unnoticed act into a listening meditation."
-medium: "Fixed-media soundscape composition"
+medium: "Violin and electronics"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/img_0506.jpg"
+credits:
+  - name: "Honor Monaco"
+    role: "Violin"
+  - name: "Tate Carson"
+    role: "Composition and electronics"
 sourceDate: "Friday July 15th, 2016"
 ---
 

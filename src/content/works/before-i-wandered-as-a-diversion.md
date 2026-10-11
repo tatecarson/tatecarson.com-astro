@@ -2,9 +2,19 @@
 title: "Before, I wandered as a diversion"
 year: 2016
 blurb: "New Orleans cicadas, riverboats, rain and thunder assembled as an augmented field recording."
-medium: "Fixed-media soundscape composition"
+medium: "Clarinet and live electronics"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/before-pond.jpg"
+credits:
+  - name: "John McCowen"
+    role: "Clarinet"
+  - name: "Tate Carson"
+    role: "Composition and electronics"
+coverage:
+  - title: "Tate Carson's Before, I wandered as a diversion"
+    outlet: "Musicworks"
+    url: "https://www.musicworks.ca/featured-article/sound-notes/tate-carsons-i-wandered-diversion"
+    sourceType: "Press"
 research:
   - kind: "Award"
     detail: "2nd place, Musicworks 2016 Electronic Music Composition Contest"

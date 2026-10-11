@@ -22,6 +22,15 @@ const prev = ordered[i - 1];
 const next = ordered[i + 1];
 
 const year = work.data.yearLabel ?? String(work.data.year);
+const credits = work.data.credits ?? [];
+const creditContexts = [...new Set(credits.map((credit) => credit.context ?? ''))];
+const coverage = work.data.coverage ?? [];
+const coverageDate = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
 
 // The body prose repeats the title inline, so the fallback applies to the whole
 // article rather than just the heading.
@@ -50,7 +59,7 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
       <p class="head__blurb">{work.data.blurb}</p>
       <p class="head__medium">{work.data.medium}</p>
       {
-        work.data.collaborators?.length && (
+        credits.length === 0 && (work.data.collaborators?.length ?? 0) > 0 && (
           <p class="head__medium">With {work.data.collaborators.join(', ')}</p>
         )
       }
@@ -91,6 +100,49 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
     <div class="prose">
       <Content />
     </div>
+
+    {
+      credits.length > 0 && (
+        <section class="documentation" aria-labelledby="credits-heading">
+          <h2 id="credits-heading" class="documentation__label">Credits</h2>
+          {creditContexts.map((context) => (
+            <div class="credits__group">
+              {context && <p class="credits__context">{context}</p>}
+              <dl class="credits__list">
+                {credits.filter((credit) => (credit.context ?? '') === context).map((credit) => (
+                  <div class="credits__entry">
+                    <dt>{credit.name}</dt>
+                    <dd>{credit.role}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      coverage.length > 0 && (
+        <section class="documentation" aria-labelledby="coverage-heading">
+          <h2 id="coverage-heading" class="documentation__label">Press and coverage</h2>
+          <ul class="coverage__list">
+            {coverage.map((item) => (
+              <li>
+                <p class="coverage__title"><a href={item.url}>{item.title} ↗</a></p>
+                <p class="coverage__citation">
+                  {item.author && <>{item.author}. </>}
+                  <cite>{item.outlet}</cite>
+                  {item.date && <>, <time datetime={item.date}>{coverageDate.format(new Date(`${item.date}T00:00:00Z`))}</time></>}
+                  .
+                </p>
+                <span class="coverage__type">{item.sourceType}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <nav class="pager">
       {prev ? <a href={`/works/${prev.id}/`}>← {prev.data.title}</a> : <span />}
@@ -321,6 +373,92 @@ const uni = needsUnicodeFallback(work.data.title + work.body);
   .prose :global(iframe) {
     max-width: 100%;
     border: 0;
+  }
+
+  .documentation {
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .documentation__label {
+    margin: 0 0 14px;
+    font: 500 10px/1.4 var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .credits__group + .credits__group {
+    margin-top: 16px;
+  }
+
+  .credits__context {
+    margin: 0 0 10px;
+    font: 400 11px/1.6 var(--mono);
+    color: var(--accent);
+  }
+
+  .credits__list,
+  .credits__list dd {
+    margin: 0;
+  }
+
+  .credits__entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 8px 20px;
+    padding: 4px 0;
+  }
+
+  .credits__list dd {
+    opacity: 0.7;
+  }
+
+  .coverage__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .coverage__list li + li {
+    margin-top: 18px;
+  }
+
+  .coverage__title,
+  .coverage__citation {
+    margin: 0 0 4px;
+  }
+
+  .coverage__title a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--rule);
+  }
+
+  .coverage__title a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .coverage__citation {
+    opacity: 0.7;
+  }
+
+  .coverage__type {
+    font: 400 10px/1.6 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  @media (max-width: 480px) {
+    .credits__entry {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      padding: 6px 0;
+    }
   }
 
   .pager {

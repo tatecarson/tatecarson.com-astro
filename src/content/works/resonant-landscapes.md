@@ -8,6 +8,18 @@ tag: "Smartphone"
 thumbnail: "/images/uploads/palisades-1.jpeg"
 url: "https://resonant-landscapes.netlify.app/"
 repo: "https://github.com/tatecarson/resonant-landscapes"
+credits:
+  - name: "Carter Gordon"
+    role: "Field recording and app testing"
+  - name: "Tate Carson"
+    role: "Field recording and app development"
+coverage:
+  - title: "Resonant Landscapes: DSU researchers make music with nature"
+    outlet: "Dakota State University"
+    url: "https://dsu.edu/news/2023/12/resonant-landscapes.html"
+    sourceType: "Institutional coverage"
+    author: "Mary Askren"
+    date: "2023-12-13"
 research:
   - kind: "Grant"
     detail: "Faculty Research Initiative Grant, Dakota State University, 2023–24"
@@ -24,8 +36,7 @@ sourceDate: "Sunday September 29th, 2024"
 Resonant Landscapes is a sound walk for a phone and headphones. In fall 2023 I
 traveled to all 13 of South Dakota's state parks and recorded each one with an
 ambisonic microphone. Its eight capsules capture the whole sphere of sound,
-above and below as well as all around. My student Carter Gordon helped with the
-recording and with testing the first versions of the app. You hear hundreds of
+above and below as well as all around. You hear hundreds of
 geese on a frozen lake, the ice at Oakwood Lakes moaning and cracking, prairie
 dogs, cars at Custer, a jet passing over, our footsteps in the snow. Some parks
 were crowded and some felt remote, and the recordings keep both the people and

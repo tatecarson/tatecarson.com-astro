@@ -2,13 +2,16 @@
 title: "Si"
 year: 2015
 blurb: "A temperamental six-year-old gets a goldfish after begging for a puppy."
-medium: "Short film (dir. Samantha Aldana)"
+medium: "Short film score"
 tag: "Film"
 thumbnail: "/images/uploads/si.jpg"
+credits:
+  - name: "Samantha Aldana"
+    role: "Direction"
+  - name: "Tate Carson"
+    role: "Music"
 sourceDate: "Wednesday July 15th, 2015"
 ---
-
-Short film directed by Samantha Aldana, 2015
 
 A temperamental six year old gets a goldfish from her parents after begging for a puppy.
 

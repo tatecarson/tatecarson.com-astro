@@ -57,10 +57,33 @@ const works = defineCollection({
     // time and the body does not have to.
     repo: z.string().url().optional(),
 
-    // Anyone whose contribution is structural rather than incidental. The
-    // archived works record collaborators in body prose only, so this stays
-    // optional rather than backfilled.
+    // Legacy name-only credits, displayed when detailed credits are absent.
     collaborators: z.array(z.string()).optional(),
+
+    credits: z
+      .array(
+        z.object({
+          name: z.string().min(1),
+          role: z.string().min(1),
+          // Attach performers to a particular recording or event when needed.
+          context: z.string().min(1).optional(),
+        }),
+      )
+      .optional(),
+
+    coverage: z
+      .array(
+        z.object({
+          title: z.string().min(1),
+          outlet: z.string().min(1),
+          url: z.string().url(),
+          sourceType: z.enum(['Press', 'Institutional coverage']),
+          author: z.string().min(1).optional(),
+          // Quoted ISO date in frontmatter; omit when the publisher is undated.
+          date: z.string().date().optional(),
+        }),
+      )
+      .optional(),
 
     // What this work produced as research — the grant that funded it, the prize
     // it won, the paper or talk it became. Seven of the works have one; the

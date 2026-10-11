@@ -37,9 +37,43 @@ Works live in `src/content/works/` as markdown with frontmatter. The schema in
 | `status` | optional | `In progress`. Absence means finished. |
 | `url` | optional | Live project site, if one exists elsewhere. |
 | `repo` | optional | Public source repository. |
-| `collaborators` | optional | Array of names. |
+| `collaborators` | optional | Legacy array of names. Shown in the header when detailed credits are absent. |
+| `credits` | optional | Array of contributor names and roles, with optional recording or performance context. |
+| `coverage` | optional | Linked press or institutional articles about the work, with citation metadata. |
 | `research` | optional | What the work produced — grant, award, paper, talk, demo, workshop. Rendered as its own box above the body. |
 | `sourceDate` | optional | Original CMS date from the archive. Not used for sorting — several contradict their year. |
+
+### Credits and coverage
+
+Project pages show Credits, then Press and coverage, below the body. Empty arrays
+or absent fields produce no section. Credits sharing a `context` appear under
+one label, so a particular performance's players are credited together.
+
+```yaml
+credits:
+  - name: "Sophia Shen"
+    role: "Pipa"
+    context: "Featured recording"
+coverage:
+  - title: "Resonant Landscapes: DSU researchers make music with nature"
+    outlet: "Dakota State University"
+    url: "https://dsu.edu/news/2023/12/resonant-landscapes.html"
+    sourceType: "Institutional coverage"
+    author: "Mary Askren"
+    date: "2023-12-13"
+```
+
+Each credit requires a nonempty `name` and `role`; `context` is optional. Each
+coverage entry requires `title`, `outlet`, an absolute `url`, and `sourceType`,
+either `Press` or `Institutional coverage`. `author` and `date` are optional.
+Quote dates in `YYYY-MM-DD` format and omit them when the publisher is undated.
+Coverage entries and credit groups appear in frontmatter order and are maintained
+manually.
+
+Coverage is for articles that discuss the specific work. Papers, programs, and
+event listings belong with Research or performance/exhibition history. Verify
+names, roles, and citation metadata before adding them; contributor attributions
+supplied by Tate are recorded in Beads.
 
 ### Works without images
 
