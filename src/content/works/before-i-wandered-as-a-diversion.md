@@ -6,8 +6,6 @@ medium: "Clarinet and live electronics"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/before-pond.jpg"
 credits:
-  - name: "Tate Carson"
-    role: "Composition and electronics"
   - name: "John McCowen"
     role: "Clarinet"
 coverage:

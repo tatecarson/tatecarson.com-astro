@@ -6,8 +6,6 @@ medium: "Violin and electronics"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/img_0506.jpg"
 credits:
-  - name: "Tate Carson"
-    role: "Composition and electronics"
   - name: "Honor Monaco"
     role: "Violin"
 sourceDate: "Friday July 15th, 2016"
