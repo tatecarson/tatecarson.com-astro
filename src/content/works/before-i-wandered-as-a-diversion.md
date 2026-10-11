@@ -6,10 +6,10 @@ medium: "Clarinet and live electronics"
 tag: "Live Electroacoustic Music"
 thumbnail: "/images/uploads/before-pond.jpg"
 credits:
-  - name: "John McCowen"
-    role: "Clarinet"
   - name: "Tate Carson"
     role: "Composition and electronics"
+  - name: "John McCowen"
+    role: "Clarinet"
 coverage:
   - title: "Tate Carson's Before, I wandered as a diversion"
     outlet: "Musicworks"

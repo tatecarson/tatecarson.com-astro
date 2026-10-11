@@ -10,10 +10,10 @@ url: "https://tatecarson.github.io/drift-website-testing/"
 thumbnail: "/images/uploads/drift.jpg"
 collaborators: ["Tim Murray"]
 credits:
-  - name: "Tim Murray"
-    role: "Structural design and fabrication"
   - name: "Tate Carson"
     role: "Sound design and programming"
+  - name: "Tim Murray"
+    role: "Structural design and fabrication"
 research:
   - kind: "Grant"
     detail: "Faculty Research Initiative Grant, Dakota State University, 2025–26 ($5,000)"

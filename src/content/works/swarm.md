@@ -5,11 +5,11 @@ blurb: "A live-sampling instrument built to capture instrument input and return 
 medium: "Custom software instrument / live performance"
 tag: "Live Electroacoustic Music"
 credits:
-  - name: "Sophia Shen"
-    role: "Pipa"
-    context: "Featured recording"
   - name: "Tate Carson"
     role: "Software and live electronics"
+    context: "Featured recording"
+  - name: "Sophia Shen"
+    role: "Pipa"
     context: "Featured recording"
 sourceDate: "Wednesday July 15th, 2015"
 ---

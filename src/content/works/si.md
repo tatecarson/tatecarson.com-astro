@@ -6,10 +6,10 @@ medium: "Short film score"
 tag: "Film"
 thumbnail: "/images/uploads/si.jpg"
 credits:
-  - name: "Samantha Aldana"
-    role: "Direction"
   - name: "Tate Carson"
     role: "Music"
+  - name: "Samantha Aldana"
+    role: "Direction"
 sourceDate: "Wednesday July 15th, 2015"
 ---
 

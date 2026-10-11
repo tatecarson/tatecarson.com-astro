@@ -51,6 +51,9 @@ one label, so a particular performance's players are credited together.
 
 ```yaml
 credits:
+  - name: "Tate Carson"
+    role: "Software and live electronics"
+    context: "Featured recording"
   - name: "Sophia Shen"
     role: "Pipa"
     context: "Featured recording"
@@ -63,8 +66,9 @@ coverage:
     date: "2023-12-13"
 ```
 
-Each credit requires a nonempty `name` and `role`; `context` is optional. Each
-coverage entry requires `title`, `outlet`, a `url`, and `sourceType`,
+Each credit requires a nonempty `name` and `role`; `context` is optional. List
+Tate Carson first in each credit group, followed by the other contributors.
+Each coverage entry requires `title`, `outlet`, a `url`, and `sourceType`,
 either `Press` or `Institutional coverage`. `author` and `date` are optional.
 Quote dates in `YYYY-MM-DD` format and omit them when the publisher is undated.
 Coverage entries and credit groups appear in frontmatter order and are maintained
