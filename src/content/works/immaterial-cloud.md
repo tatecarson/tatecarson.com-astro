@@ -35,5 +35,5 @@ This work needs 2-4 smartphones (iPhone or Android) connected to the internet vi
 ## Exhibitions
 
 * Web Audio Conference, Barcelona, Spain, July 5-7, 2021
-* New Interfaces for Musical Expression, online at <https://nime2020.bcu.ac.uk/>, July 21-25, 2020
+* New Interfaces for Musical Expression, online at <https://web.archive.org/web/20201127204443/https://nime2020.bcu.ac.uk/>, July 21-25, 2020
 * Network Music Festival, online at <https://networkmusicfestival.org/>, July 15-18, 2020

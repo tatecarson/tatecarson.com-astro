@@ -319,6 +319,20 @@ const BODY_FIXES = {
     // "Project site" label retires the typo with it. The address still appears
     // in the prose below, where it is part of the participation instructions.
     [/^visit: \[imamterial\.cloud\]\([^)]*\)\n\n/m, ''],
+    // The NIME 2020 conference domain no longer resolves. Point at the Wayback
+    // snapshot so the exhibition listing still leads somewhere.
+    [
+      /<https:\/\/nime2020\.bcu\.ac\.uk\/>/,
+      '<https://web.archive.org/web/20201127204443/https://nime2020.bcu.ac.uk/>',
+    ],
+  ],
+  'a-more-perfect-union': [
+    // The old site served papers under /assets/papers/; this one serves the
+    // same PDF from /papers/, so the absolute link 404'd.
+    [
+      /\(http:\/\/tatecarson\.com\/assets\/papers\/wac-2018-perfect\.pdf\)/,
+      '(/papers/wac-2018-perfect.pdf)',
+    ],
   ],
   'mesh-garden': [
     // Moved to REPOS.
