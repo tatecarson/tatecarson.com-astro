@@ -319,6 +319,12 @@ const BODY_FIXES = {
     // "Project site" label retires the typo with it. The address still appears
     // in the prose below, where it is part of the participation instructions.
     [/^visit: \[imamterial\.cloud\]\([^)]*\)\n\n/m, ''],
+    // The NIME 2020 conference domain no longer resolves. Point at the Wayback
+    // snapshot so the exhibition listing still leads somewhere.
+    [
+      /<https:\/\/nime2020\.bcu\.ac\.uk\/>/,
+      '<https://web.archive.org/web/20201127204443/https://nime2020.bcu.ac.uk/>',
+    ],
   ],
   'mesh-garden': [
     // Moved to REPOS.

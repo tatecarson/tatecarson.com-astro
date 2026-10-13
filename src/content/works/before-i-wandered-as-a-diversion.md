@@ -11,7 +11,7 @@ credits:
 coverage:
   - title: "Tate Carson's Before, I wandered as a diversion"
     outlet: "Musicworks"
-    url: "https://www.musicworks.ca/featured-article/sound-notes/tate-carsons-i-wandered-diversion"
+    url: "https://musicworks.ca/tate-carsons-i-wandered-diversion/"
     sourceType: "Press"
 research:
   - kind: "Award"
