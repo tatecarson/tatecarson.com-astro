@@ -326,6 +326,14 @@ const BODY_FIXES = {
       '<https://web.archive.org/web/20201127204443/https://nime2020.bcu.ac.uk/>',
     ],
   ],
+  'a-more-perfect-union': [
+    // The old site served papers under /assets/papers/; this one serves the
+    // same PDF from /papers/, so the absolute link 404'd.
+    [
+      /\(http:\/\/tatecarson\.com\/assets\/papers\/wac-2018-perfect\.pdf\)/,
+      '(/papers/wac-2018-perfect.pdf)',
+    ],
+  ],
   'mesh-garden': [
     // Moved to REPOS.
     [/^\[Code\]\([^)]*\)\n\n/m, ''],
