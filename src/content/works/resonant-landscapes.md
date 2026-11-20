@@ -34,7 +34,7 @@ research:
     detail: "Audio Mostly 2024 — Explorations in Sonic Cultures, Milan"
     url: "https://doi.org/10.1145/3678299.3678354"
   - kind: "Talk"
-    detail: "Artist talk, Sound+ Installations opening reception, Chatham University, Pittsburgh, October 8, 2026"
+    detail: "Artist talk, SEAMUS Create Sound Installations opening reception, Chatham University, Pittsburgh, October 8, 2026"
 sourceDate: "Sunday September 29th, 2024"
 ---
 
@@ -76,12 +76,12 @@ recordings also became the surround-sound piece [*Veins of the Earth*](/works/ve
 
 ### Installation at Chatham University, 2026
 
-The gallery station in *Sound+ Installations*.
+The gallery station in *SEAMUS Create Sound Installations*.
 
-![The Resonant Landscapes wall text, with its QR code, hung on a white gallery wall beside a smaller printed statement, above a white plinth holding a pair of black headphones.](/images/uploads/chatham-installation-2026.jpg "Sound+ Installations, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, 2026")
+![The Resonant Landscapes wall text, with its QR code, hung on a white gallery wall beside a smaller printed statement, above a white plinth holding a pair of black headphones.](/images/uploads/chatham-installation-2026.jpg "SEAMUS Create Sound Installations, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, 2026")
 
 ## Exhibitions
 
 * Dakota State University Research Symposium, 2024
 * Audio Mostly Conference, Milan, Italy, September 18 - 20, 2024
-* *Sound+ Installations*, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, Pittsburgh, October 5 - November 22, 2026
+* *SEAMUS Create Sound Installations*, Susan Bergman Gurrentz '56 Art Gallery, Chatham University, Pittsburgh, October 7 - November 20, 2026
